@@ -21,6 +21,21 @@ jest.mock("react-native-safe-area-context", () => ({
   })),
 }))
 
+jest.mock("@/theme/context", () => {
+  const lightTheme = require("@/theme/theme").lightTheme
+  return {
+    useAppTheme: () => ({
+      theme: lightTheme,
+      themed: (styles: any) => {
+        const list = [styles]
+          .flat(3)
+          .map((style) => (typeof style === "function" ? style(lightTheme) : style))
+        return Object.assign({}, ...list)
+      },
+    }),
+  }
+})
+
 const TestDebounce = ({ value, wait }: { value: string; wait: number }) => {
   const debounced = useDebounce(value, wait)
   return <Text testID="debounced-value">{debounced}</Text>
