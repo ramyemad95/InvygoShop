@@ -26,7 +26,7 @@ const TestDebounce = ({ value, wait }: { value: string; wait: number }) => {
   return <Text testID="debounced-value">{debounced}</Text>
 }
 
-const TestSafeArea = ({ edges }: { edges: Array<"top" | "end"> }) => {
+const TestSafeArea = ({ edges }: { edges: Array<"top" | "end" | "start"> }) => {
   const style = useSafeAreaInsetsStyle(edges as any, "margin")
   return <Text testID="safe-area-style">{JSON.stringify(style)}</Text>
 }
@@ -98,7 +98,7 @@ describe("utils", () => {
 
   it("opens links only when allowed", async () => {
     const canOpenSpy = jest.spyOn(Linking, "canOpenURL").mockResolvedValue(true)
-    const openUrlSpy = jest.spyOn(Linking, "openURL").mockResolvedValue()
+    const openUrlSpy = jest.spyOn(Linking, "openURL").mockResolvedValue(undefined)
 
     await openLinkInBrowser("https://example.com")
     expect(canOpenSpy).toHaveBeenCalledWith("https://example.com")

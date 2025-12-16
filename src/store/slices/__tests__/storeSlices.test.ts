@@ -41,9 +41,14 @@ describe("carsSlice", () => {
   it("stores first page results on fulfilled", () => {
     const state = carsReducer(
       undefined,
-      loadCars.fulfilled({ cars: [sampleCar], total: 1, hasMore: false, page: 1 }, "req", {
-        page: 1,
-      }),
+      loadCars.fulfilled(
+        { cars: [sampleCar], total: 1, hasMore: false, page: 1, searchQuery: "" },
+        "req",
+        {
+          page: 1,
+          searchQuery: "",
+        },
+      ),
     )
 
     expect(state.cars).toHaveLength(1)
@@ -55,9 +60,14 @@ describe("carsSlice", () => {
   it("appends non-duplicate cars on next pages", () => {
     const initial = carsReducer(
       undefined,
-      loadCars.fulfilled({ cars: [sampleCar], total: 2, hasMore: true, page: 1 }, "req", {
-        page: 1,
-      }),
+      loadCars.fulfilled(
+        { cars: [sampleCar], total: 2, hasMore: true, page: 1, searchQuery: "" },
+        "req",
+        {
+          page: 1,
+          searchQuery: "",
+        },
+      ),
     )
 
     const moreCars = [
@@ -67,9 +77,14 @@ describe("carsSlice", () => {
 
     const state = carsReducer(
       { ...initial, loading: false, loadingMore: true },
-      loadCars.fulfilled({ cars: moreCars, total: 2, hasMore: false, page: 2 }, "req2", {
-        page: 2,
-      }),
+      loadCars.fulfilled(
+        { cars: moreCars, total: 2, hasMore: false, page: 2, searchQuery: "" },
+        "req2",
+        {
+          page: 2,
+          searchQuery: "",
+        },
+      ),
     )
 
     expect(state.cars.map((c) => c.name)).toEqual(["Model S", "Model 3"])
@@ -78,7 +93,10 @@ describe("carsSlice", () => {
   })
 
   it("sets error on rejection", () => {
-    const state = carsReducer(undefined, loadCars.rejected(new Error("fail"), "req", { page: 1 }))
+    const state = carsReducer(
+      undefined,
+      loadCars.rejected(new Error("fail"), "req", { page: 1, searchQuery: "" }),
+    )
     expect(state.error).toBe("fail")
     expect(state.loading).toBe(false)
     expect(state.loadingMore).toBe(false)
@@ -88,7 +106,7 @@ describe("carsSlice", () => {
     const base = carsReducer(undefined, { type: "init" } as any)
     const state = carsReducer(
       { ...(base as any), loadingMore: true },
-      loadCars.pending("req", { page: 2 }),
+      loadCars.pending("req", { page: 2, searchQuery: "" }),
     )
     expect(state.loadingMore).toBe(true)
   })
@@ -96,9 +114,14 @@ describe("carsSlice", () => {
   it("sets loadingMore true when fetching next page", () => {
     const base = carsReducer(
       undefined,
-      loadCars.fulfilled({ cars: [sampleCar], total: 2, hasMore: true, page: 1 }, "req", {
-        page: 1,
-      }),
+      loadCars.fulfilled(
+        { cars: [sampleCar], total: 2, hasMore: true, page: 1, searchQuery: "" },
+        "req",
+        {
+          page: 1,
+          searchQuery: "",
+        },
+      ),
     )
 
     const state = carsReducer(base, loadCars.pending("req", { page: 2 }))
@@ -106,7 +129,10 @@ describe("carsSlice", () => {
   })
 
   it("falls back to default error message when missing", () => {
-    const action: any = loadCars.rejected({ name: "Error" } as any, "req", { page: 1 })
+    const action: any = loadCars.rejected({ name: "Error" } as any, "req", {
+      page: 1,
+      searchQuery: "",
+    })
     action.error = {}
     const state = carsReducer(undefined, action)
     expect(state.error).toBe("Failed to load cars")
@@ -115,9 +141,14 @@ describe("carsSlice", () => {
   it("resets cars", () => {
     const populatedState = carsReducer(
       undefined,
-      loadCars.fulfilled({ cars: [sampleCar], total: 1, hasMore: false, page: 1 }, "req", {
-        page: 1,
-      }),
+      loadCars.fulfilled(
+        { cars: [sampleCar], total: 1, hasMore: false, page: 1, searchQuery: "" },
+        "req",
+        {
+          page: 1,
+          searchQuery: "",
+        },
+      ),
     )
 
     const state = carsReducer(populatedState, resetCars())

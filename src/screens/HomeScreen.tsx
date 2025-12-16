@@ -96,11 +96,11 @@ export const HomeScreen = () => {
     })
   }, [cars.length, loading, loadingMore, hasMore, total, page])
 
-  const bottomSheetRef = React.useRef<BottomSheet>(null)
+  const bottomSheetRef = useRef<BottomSheet>(null)
   const snapPoints = useMemo(() => ["60%", "90%"], [])
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
-  const isLoadingMoreRef = React.useRef(false)
-  const hasScrolledRef = React.useRef(false)
+  const isLoadingMoreRef = useRef(false)
+  const hasScrolledRef = useRef(false)
   const renderBackdrop = useCallback(
     (props: BottomSheetBackdropProps) => (
       <BottomSheetBackdrop

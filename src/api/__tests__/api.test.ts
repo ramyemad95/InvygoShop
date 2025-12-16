@@ -16,9 +16,13 @@ jest.mock("@/store", () => {
 
 describe("apiClient interceptors", () => {
   it("adds language header and normalizes errors", async () => {
-    const requestHandler = apiClient.instance.interceptors.request.handlers[0]?.fulfilled
-    const responseSuccessHandler = apiClient.instance.interceptors.response.handlers[0]?.fulfilled
-    const responseErrorHandler = apiClient.instance.interceptors.response.handlers[0]?.rejected
+    // Access handlers through type assertion since handlers is not in public API
+    const requestInterceptors = (apiClient.instance.interceptors.request as any).handlers
+    const responseInterceptors = (apiClient.instance.interceptors.response as any).handlers
+
+    const requestHandler = requestInterceptors[0]?.fulfilled
+    const responseSuccessHandler = responseInterceptors[0]?.fulfilled
+    const responseErrorHandler = responseInterceptors[0]?.rejected
 
     expect(typeof requestHandler).toBe("function")
     expect(typeof responseErrorHandler).toBe("function")
