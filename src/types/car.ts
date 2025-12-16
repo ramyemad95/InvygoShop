@@ -10,4 +10,3 @@ export interface Car {
   rent_price_per_day: number
   available_colors: string[]
 }
-

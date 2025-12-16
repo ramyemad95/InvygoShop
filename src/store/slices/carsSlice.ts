@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import { Car } from "@/types/car"
+
 import { fetchCars } from "@/api/carsApi"
+import { Car } from "@/types/car"
 
 interface CarsState {
   cars: Car[]

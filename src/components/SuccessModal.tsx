@@ -1,21 +1,22 @@
-import React from "react"
+import { type FC } from "react"
 import { View, StyleSheet, Modal } from "react-native"
+
 import { useAppTheme } from "@/theme/context"
-import { Screen } from "./Screen"
-import { Text } from "./Text"
+
 import { Button } from "./Button"
+import { Text } from "./Text"
 
 interface SuccessModalProps {
   visible: boolean
   onClose: () => void
 }
 
-export const SuccessModal: React.FC<SuccessModalProps> = ({ visible, onClose }) => {
+export const SuccessModal: FC<SuccessModalProps> = ({ visible, onClose }) => {
   const { theme } = useAppTheme()
 
   return (
     <Modal visible={visible} transparent animationType="fade">
-      <View style={styles.overlay}>
+      <View style={[styles.overlay, { backgroundColor: theme.colors.palette.overlay50 }]}>
         <View
           style={[
             styles.container,
@@ -35,36 +36,35 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ visible, onClose }) 
 }
 
 const styles = StyleSheet.create({
-  overlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
-    justifyContent: "center",
-    alignItems: "center",
+  button: {
+    minWidth: 120,
   },
   container: {
-    width: "80%",
-    padding: 24,
-    borderRadius: 16,
     alignItems: "center",
+    borderRadius: 16,
+    padding: 24,
+    width: "80%",
   },
   emoji: {
     fontSize: 64,
     lineHeight: 72,
-    textAlign: "center",
     marginBottom: 16,
+    textAlign: "center",
+  },
+  message: {
+    fontSize: 16,
+    marginBottom: 24,
+    textAlign: "center",
+  },
+  overlay: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 8,
     textAlign: "center",
-  },
-  message: {
-    fontSize: 16,
-    textAlign: "center",
-    marginBottom: 24,
-  },
-  button: {
-    minWidth: 120,
   },
 })

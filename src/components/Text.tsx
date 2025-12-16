@@ -1,8 +1,8 @@
 import { ReactNode, forwardRef, ForwardedRef } from "react"
 // eslint-disable-next-line no-restricted-imports
 import { StyleProp, Text as RNText, TextProps as RNTextProps, TextStyle } from "react-native"
-import { TOptions } from "i18next"
 import { I18nManager } from "react-native"
+import { TOptions } from "i18next"
 
 import { TxKeyPath } from "@/i18n"
 import { translate } from "@/i18n/translate"

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
+import { StyleSheet } from "react-native"
 import { Slot, SplashScreen } from "expo-router"
 import { useFonts } from "@expo-google-fonts/space-grotesk"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { KeyboardProvider } from "react-native-keyboard-controller"
 import {
   initialWindowMetrics,
@@ -8,13 +10,12 @@ import {
   SafeAreaView,
 } from "react-native-safe-area-context"
 import { Provider } from "react-redux"
-import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import { initI18n } from "@/i18n"
+import { store } from "@/store"
 import { ThemeProvider } from "@/theme/context"
 import { customFontsToLoad } from "@/theme/typography"
 import { loadDateFnsLocale } from "@/utils/formatDate"
-import { store } from "@/store"
 
 SplashScreen.preventAutoHideAsync()
 
@@ -52,10 +53,10 @@ export default function Root() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={styles.container}>
       <Provider store={store}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <SafeAreaView style={{ flex: 1 }} edges={["top", "bottom"]}>
+          <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
             <ThemeProvider>
               <KeyboardProvider>
                 <Slot />
@@ -67,3 +68,9 @@ export default function Root() {
     </GestureHandlerRootView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})

@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import { useState, type FC } from "react"
 import { View, StyleSheet, Modal, ScrollView } from "react-native"
+
+import { translate } from "@/i18n/translate"
 import { useAppTheme } from "@/theme/context"
 import { Car } from "@/types/car"
-import { translate } from "@/i18n/translate"
+
+import { Button } from "./Button"
 import { Text } from "./Text"
 import { TextField } from "./TextField"
-import { Button } from "./Button"
 
 interface CheckoutModalProps {
   visible: boolean
@@ -15,7 +17,7 @@ interface CheckoutModalProps {
   onClose: () => void
 }
 
-export const CheckoutModal: React.FC<CheckoutModalProps> = ({
+export const CheckoutModal: FC<CheckoutModalProps> = ({
   visible,
   car,
   selectedColor,
@@ -107,7 +109,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         <ScrollView style={styles.container} contentContainerStyle={styles.content}>
           <Text preset="heading" tx="checkoutModal:title" style={styles.title} />
 
-          <View style={styles.carSummary}>
+          <View style={[styles.carSummary, { backgroundColor: theme.colors.palette.neutral200 }]}>
             <Text preset="subheading" text={`${car.brand} ${car.name}`} />
             <Text tx="checkoutModal:color" txOptions={{ color: selectedColor }} />
             <Text
@@ -202,9 +204,18 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 }
 
 const styles = StyleSheet.create({
-  sheet: {
+  actions: {
+    flexDirection: "row",
+    gap: 12,
+    marginTop: "auto",
+  },
+  button: {
     flex: 1,
-    paddingTop: 24,
+  },
+  carSummary: {
+    borderRadius: 8,
+    marginBottom: 24,
+    padding: 16,
   },
   container: {
     flex: 1,
@@ -212,19 +223,11 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 24,
-  },
-  carSummary: {
-    marginBottom: 24,
-    padding: 16,
-    borderRadius: 8,
-    backgroundColor: "rgba(0,0,0,0.05)",
-  },
   form: {
     marginBottom: 24,
+  },
+  halfWidth: {
+    flex: 1,
   },
   label: {
     marginTop: 16,
@@ -233,15 +236,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 12,
   },
-  halfWidth: {
+  sheet: {
     flex: 1,
+    paddingTop: 24,
   },
-  actions: {
-    flexDirection: "row",
-    gap: 12,
-    marginTop: "auto",
-  },
-  button: {
-    flex: 1,
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 24,
   },
 })

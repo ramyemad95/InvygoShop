@@ -28,4 +28,3 @@ describe("crashReporting", () => {
     expect(() => reportCrash(new Error("prod"))).not.toThrow()
   })
 })
-

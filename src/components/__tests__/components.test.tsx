@@ -1,9 +1,9 @@
-import React from "react"
-import { act, fireEvent, render } from "@testing-library/react-native"
+import { fireEvent, render } from "@testing-library/react-native"
+
+import { lightTheme } from "@/theme/theme"
 
 import { CarListItemShimmer } from "../CarListItemShimmer"
 import { CheckoutModal } from "../CheckoutModal"
-import { lightTheme } from "@/theme/theme"
 
 const themed = (styles: any) => {
   const list = [styles]
@@ -106,4 +106,3 @@ describe("CheckoutModal", () => {
     expect(getByTestId("checkout-cancel")).toBeTruthy()
   })
 })
-

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react"
+import { useEffect, useRef, type FC } from "react"
 import { Animated, StyleSheet, View, ViewStyle, DimensionValue } from "react-native"
+
 import { useAppTheme } from "@/theme/context"
 
 interface ShimmerViewProps {
@@ -9,7 +10,7 @@ interface ShimmerViewProps {
   borderRadius?: number
 }
 
-export const ShimmerView: React.FC<ShimmerViewProps> = ({
+export const ShimmerView: FC<ShimmerViewProps> = ({
   width = "100%",
   height = 20,
   style,
@@ -43,12 +44,12 @@ export const ShimmerView: React.FC<ShimmerViewProps> = ({
   return (
     <View
       style={[
+        styles.shimmer,
         {
           width,
           height,
           borderRadius,
           backgroundColor: theme.colors.palette.neutral300,
-          overflow: "hidden",
         },
         style,
       ]}
@@ -66,3 +67,8 @@ export const ShimmerView: React.FC<ShimmerViewProps> = ({
   )
 }
 
+const styles = StyleSheet.create({
+  shimmer: {
+    overflow: "hidden",
+  },
+})

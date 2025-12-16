@@ -1,16 +1,16 @@
-import React, { useCallback, useMemo, useState, useEffect, useRef } from "react"
+import { useMemo, useState } from "react"
 import { View, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Animated } from "react-native"
 import { useRouter, useLocalSearchParams } from "expo-router"
-import { useAppTheme } from "@/theme/context"
-import { useAppSelector } from "@/store"
-import { Car } from "@/types/car"
-import { Screen } from "@/components/Screen"
-import { Text } from "@/components/Text"
+
 import { Button } from "@/components/Button"
-import { Icon } from "@/components/Icon"
 import { CachedImage } from "@/components/CachedImage"
 import { CheckoutModal } from "@/components/CheckoutModal"
+import { Icon } from "@/components/Icon"
+import { Screen } from "@/components/Screen"
 import { SuccessModal } from "@/components/SuccessModal"
+import { Text } from "@/components/Text"
+import { useAppSelector } from "@/store"
+import { useAppTheme } from "@/theme/context"
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window")
 
@@ -67,8 +67,11 @@ export const CarDetailsScreen = () => {
   if (!car) {
     return (
       <Screen>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+        <View style={[styles.header, { backgroundColor: theme.colors.palette.overlay50 }]}>
+          <TouchableOpacity
+            onPress={() => router.back()}
+            style={[styles.backButton, { backgroundColor: theme.colors.palette.neutral100 + "E6" }]}
+          >
             <Icon icon="back" size={24} />
           </TouchableOpacity>
           <View style={styles.placeholder} />
@@ -82,8 +85,11 @@ export const CarDetailsScreen = () => {
 
   return (
     <Screen preset="scroll">
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+      <View style={[styles.header, { backgroundColor: theme.colors.palette.overlay50 }]}>
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={[styles.backButton, { backgroundColor: theme.colors.palette.neutral100 + "E6" }]}
+        >
           <Icon icon="back" size={24} />
         </TouchableOpacity>
         <View style={styles.placeholder} />
@@ -114,12 +120,11 @@ export const CarDetailsScreen = () => {
                   key={index}
                   style={[
                     styles.indicator,
+                    isActive ? styles.indicatorActive : styles.indicatorInactive,
                     {
                       backgroundColor: isActive
                         ? theme.colors.palette.neutral900
                         : theme.colors.palette.neutral400,
-                      width: 8,
-                      opacity: isActive ? 1 : 0.5,
                     },
                   ]}
                 />
@@ -162,7 +167,11 @@ export const CarDetailsScreen = () => {
             ))}
           </View>
           {!selectedColor && (
-            <Text preset="formHelper" tx="carDetailsScreen:selectColor" style={styles.errorText} />
+            <Text
+              preset="formHelper"
+              tx="carDetailsScreen:selectColor"
+              style={[styles.errorText, { color: theme.colors.error }]}
+            />
           )}
         </View>
 
@@ -189,54 +198,82 @@ export const CarDetailsScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-    backgroundColor: "rgba(0,0,0,0.3)",
-  },
   backButton: {
-    padding: 8,
-    backgroundColor: "rgba(255,255,255,0.9)",
     borderRadius: 20,
+    padding: 8,
   },
-  placeholder: {
-    width: 40,
+  buyButton: {
+    marginTop: 8,
   },
-  imageContainer: {
-    position: "relative",
-  },
-  image: {
-    height: 300,
-  },
-  imageIndicators: {
-    position: "absolute",
-    bottom: 16,
-    left: 0,
-    right: 0,
-    flexDirection: "row",
-    justifyContent: "center",
+  centerContainer: {
     alignItems: "center",
-    gap: 8,
+    flex: 1,
+    justifyContent: "center",
+    padding: 32,
   },
-  indicator: {
-    height: 8,
-    borderRadius: 4,
+  colorChip: {
+    minWidth: 80,
+  },
+  colorChips: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    marginBottom: 8,
+  },
+  colorsContainer: {
+    marginBottom: 24,
+  },
+  colorsTitle: {
+    marginBottom: 12,
   },
   content: {
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 8,
+  errorText: {
+    color: undefined, // Will be set dynamically
+  },
+  header: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    left: 0,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    position: "absolute",
+    right: 0,
+    top: 0,
+    zIndex: 10,
+  },
+  image: {
+    height: 300,
+  },
+  imageContainer: {
+    position: "relative",
+  },
+  imageIndicators: {
+    alignItems: "center",
+    bottom: 16,
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    left: 0,
+    position: "absolute",
+    right: 0,
+  },
+  indicator: {
+    borderRadius: 4,
+    height: 8,
+    marginHorizontal: 4,
+    width: 8,
+  },
+  indicatorActive: {
+    opacity: 1,
+  },
+  indicatorInactive: {
+    opacity: 0.5,
+  },
+  placeholder: {
+    width: 40,
   },
   price: {
     fontSize: 28,
@@ -252,34 +289,12 @@ const styles = StyleSheet.create({
   },
   specsValue: {
     fontSize: 16,
-    textTransform: "capitalize",
     marginTop: 4,
+    textTransform: "capitalize",
   },
-  colorsContainer: {
-    marginBottom: 24,
-  },
-  colorsTitle: {
-    marginBottom: 12,
-  },
-  colorChips: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
     marginBottom: 8,
-  },
-  colorChip: {
-    minWidth: 80,
-  },
-  errorText: {
-    color: "red",
-  },
-  buyButton: {
-    marginTop: 8,
-  },
-  centerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 32,
   },
 })

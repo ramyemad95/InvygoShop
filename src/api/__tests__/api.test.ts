@@ -1,3 +1,6 @@
+import { apiClient } from "../apiClient"
+import { fetchCars } from "../carsApi"
+
 jest.mock("@/store", () => {
   const actual = jest.requireActual("@/store")
   return {
@@ -10,9 +13,6 @@ jest.mock("@/store", () => {
     },
   }
 })
-
-import { apiClient } from "../apiClient"
-import { fetchCars } from "../carsApi"
 
 describe("apiClient interceptors", () => {
   it("adds language header and normalizes errors", async () => {
@@ -84,4 +84,3 @@ describe("fetchCars", () => {
     expect(result.hasMore === true || result.hasMore === false).toBe(true)
   })
 })
-

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   View,
   StyleSheet,
@@ -8,15 +8,23 @@ import {
   FlatList,
   Animated,
 } from "react-native"
-import { useRouter } from "expo-router"
 import { useWindowDimensions } from "react-native"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { useRouter } from "expo-router"
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetView,
   type BottomSheetBackdropProps,
 } from "@gorhom/bottom-sheet"
-import { useAppTheme } from "@/theme/context"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+
+import { Button } from "@/components/Button"
+import { CachedImage } from "@/components/CachedImage"
+import { CarListItemShimmer } from "@/components/CarListItemShimmer"
+import { Icon } from "@/components/Icon"
+import { Screen } from "@/components/Screen"
+import { Text } from "@/components/Text"
+import { TextField } from "@/components/TextField"
+import { translate } from "@/i18n/translate"
 import { useAppDispatch, useAppSelector } from "@/store"
 import { loadCars, resetCars } from "@/store/slices/carsSlice"
 import {
@@ -25,18 +33,11 @@ import {
   setPriceRange,
   resetFilters,
 } from "@/store/slices/filtersSlice"
+import { useAppTheme } from "@/theme/context"
 import { Car } from "@/types/car"
-import { Screen } from "@/components/Screen"
-import { Text } from "@/components/Text"
-import { TextField } from "@/components/TextField"
-import { Button } from "@/components/Button"
-import { CachedImage } from "@/components/CachedImage"
-import { Icon } from "@/components/Icon"
 import { useDebounce } from "@/utils/useDebounce"
-import { translate } from "@/i18n/translate"
-import { CarListItemShimmer } from "@/components/CarListItemShimmer"
 
-const CarListItem = React.memo(({ car, onPress }: { car: Car; onPress: () => void }) => {
+const CarListItem = memo(({ car, onPress }: { car: Car; onPress: () => void }) => {
   const { theme } = useAppTheme()
   const { width } = useWindowDimensions()
   const isTablet = width >= 768
@@ -81,7 +82,7 @@ export const HomeScreen = () => {
   const [refreshing, setRefreshing] = useState(false)
   const [page, setPage] = useState(1)
   const pullAnim = useRef(new Animated.Value(0)).current
-  const [pullDistance, setPullDistance] = useState(0)
+  const [, setPullDistance] = useState(0)
 
   // Debug: Log state changes
   useEffect(() => {
@@ -119,7 +120,7 @@ export const HomeScreen = () => {
     setPage(1)
     isLoadingMoreRef.current = false
     hasScrolledRef.current = false
-  }, [dispatch])
+  }, [dispatch, searchQuery])
 
   useEffect(() => {
     dispatch(setSearchQuery(debouncedSearchQuery))
@@ -128,6 +129,7 @@ export const HomeScreen = () => {
     setPage(1)
     isLoadingMoreRef.current = false
     hasScrolledRef.current = false
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- debouncedSearchQuery is the correct dependency, not searchQuery
   }, [debouncedSearchQuery, dispatch])
 
   const filteredCars = useMemo(() => {
@@ -171,9 +173,6 @@ export const HomeScreen = () => {
     })
     return Array.from(colors).sort()
   }, [cars])
-
-  const minPrice = useMemo(() => Math.min(...cars.map((c) => c.price)), [cars])
-  const maxPrice = useMemo(() => Math.max(...cars.map((c) => c.price)), [cars])
 
   const [localMinPrice, setLocalMinPrice] = useState(priceRange.min?.toString() || "")
   const [localMaxPrice, setLocalMaxPrice] = useState(priceRange.max?.toString() || "")
@@ -226,7 +225,7 @@ export const HomeScreen = () => {
     } finally {
       setRefreshing(false)
     }
-  }, [dispatch])
+  }, [dispatch, searchQuery])
 
   const handleLoadMore = useCallback(async () => {
     console.log("[LoadMore] Called", {
@@ -262,7 +261,7 @@ export const HomeScreen = () => {
       setPage((prev) => prev - 1) // Revert page on error
       isLoadingMoreRef.current = false
     }
-  }, [hasMore, loading, loadingMore, refreshing, page, dispatch])
+  }, [hasMore, loading, loadingMore, refreshing, page, dispatch, searchQuery])
 
   const handleFilterButtonPress = useCallback(() => {
     if (bottomSheetIndex === -1) {
@@ -495,87 +494,60 @@ export const HomeScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  screenContent: {
-    flex: 1,
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  settingsButton: {
-    padding: 8,
-  },
-  searchContainer: {
-    flexDirection: "row",
-    paddingHorizontal: 16,
-    paddingBottom: 16,
-    gap: 12,
-  },
-  searchInput: {
-    flex: 1,
-  },
-  filterButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 8,
-    gap: 8,
-  },
-  pullIndicator: {
-    paddingHorizontal: 16,
-    paddingBottom: 8,
-    alignItems: "center",
-  },
-  pullIndicatorText: {
-    textAlign: "center",
-  },
-  filterButtonText: {
-    fontSize: 14,
-  },
-  listContent: {
-    padding: 16,
-    alignItems: "center",
-  },
-  carItem: {
-    marginBottom: 16,
-    borderRadius: 12,
-    overflow: "hidden",
-    marginHorizontal: 8,
-  },
-  carImage: {
-    width: "100%",
-    height: 200,
-  },
-  carInfo: {
-    padding: 12,
-  },
-  price: {
-    marginTop: 4,
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  centerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 32,
-  },
   bottomSheetContent: {
     flex: 1,
     padding: 16,
   },
-  filterTitle: {
-    marginBottom: 24,
+  carImage: {
+    height: 200,
+    width: "100%",
+  },
+  carInfo: {
+    padding: 12,
+  },
+  carItem: {
+    borderRadius: 12,
+    marginBottom: 16,
+    marginHorizontal: 8,
+    overflow: "hidden",
+  },
+  centerContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+    padding: 32,
+  },
+  colorChip: {
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  colorChipText: {
+    fontSize: 14,
+  },
+  colorChips: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+  },
+  container: {
+    flex: 1,
+  },
+  filterActions: {
+    flexDirection: "row",
+    gap: 12,
+    marginTop: "auto",
+  },
+  filterButton: {
+    alignItems: "center",
+    borderRadius: 8,
+    flexDirection: "row",
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  filterButtonText: {
+    fontSize: 14,
   },
   filterSection: {
     marginBottom: 24,
@@ -583,35 +555,62 @@ const styles = StyleSheet.create({
   filterSectionTitle: {
     marginBottom: 12,
   },
-  priceInputs: {
+  filterTitle: {
+    marginBottom: 24,
+  },
+  header: {
+    alignItems: "center",
     flexDirection: "row",
-    gap: 12,
-  },
-  priceInput: {
-    flex: 1,
-  },
-  colorChips: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  colorChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-  },
-  colorChipText: {
-    fontSize: 14,
-  },
-  filterActions: {
-    flexDirection: "row",
-    gap: 12,
-    marginTop: "auto",
+    justifyContent: "space-between",
+    padding: 16,
   },
   list: {
     flex: 1,
   },
+  listContent: {
+    alignItems: "center",
+    padding: 16,
+  },
   loadingFooter: {
     padding: 16,
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginTop: 4,
+  },
+  priceInput: {
+    flex: 1,
+  },
+  priceInputs: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  pullIndicator: {
+    alignItems: "center",
+    paddingBottom: 8,
+    paddingHorizontal: 16,
+  },
+  pullIndicatorText: {
+    textAlign: "center",
+  },
+  screenContent: {
+    flex: 1,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    gap: 12,
+    paddingBottom: 16,
+    paddingHorizontal: 16,
+  },
+  searchInput: {
+    flex: 1,
+  },
+  settingsButton: {
+    padding: 8,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
   },
 })

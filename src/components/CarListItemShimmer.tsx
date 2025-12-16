@@ -1,7 +1,8 @@
-import React from "react"
 import { View, StyleSheet } from "react-native"
 import { useWindowDimensions } from "react-native"
+
 import { useAppTheme } from "@/theme/context"
+
 import { ShimmerView } from "./ShimmerView"
 
 export const CarListItemShimmer = () => {
@@ -31,10 +32,10 @@ export const CarListItemShimmer = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 16,
     borderRadius: 12,
-    overflow: "hidden",
+    marginBottom: 16,
     marginHorizontal: 8,
+    overflow: "hidden",
   },
   content: {
     padding: 12,
@@ -43,4 +44,3 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 })
-

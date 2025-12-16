@@ -1,17 +1,16 @@
-import React from "react"
 import { View, StyleSheet, TouchableOpacity } from "react-native"
-import { useRouter } from "expo-router"
 import { DevSettings } from "react-native"
-import { useAppTheme } from "@/theme/context"
-import { useAppDispatch, useAppSelector } from "@/store"
-import { setTheme, setLanguage } from "@/store/slices/uiSlice"
-import { setRTLFromLanguage } from "@/i18n"
+import { useRouter } from "expo-router"
+import i18n from "i18next"
+
+import { Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
-import { Button } from "@/components/Button"
-import { Icon } from "@/components/Icon"
 import { Switch } from "@/components/Toggle/Switch"
-import i18n from "i18next"
+import { setRTLFromLanguage } from "@/i18n"
+import { useAppDispatch, useAppSelector } from "@/store"
+import { setTheme, setLanguage } from "@/store/slices/uiSlice"
+import { useAppTheme } from "@/theme/context"
 
 export const SettingsScreen = () => {
   const router = useRouter()
@@ -39,7 +38,7 @@ export const SettingsScreen = () => {
 
   return (
     <Screen preset="scroll">
-      <View style={styles.header}>
+      <View style={[styles.header, { borderBottomColor: theme.colors.separator }]}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Icon icon="back" size={24} />
         </TouchableOpacity>
@@ -48,7 +47,7 @@ export const SettingsScreen = () => {
       </View>
       <View style={styles.container}>
         <View style={styles.section}>
-          <View style={styles.settingRow}>
+          <View style={[styles.settingRow, { borderBottomColor: theme.colors.separator }]}>
             <View style={styles.settingInfo}>
               <Text preset="subheading" tx="settingsScreen:theme" />
               <Text
@@ -59,7 +58,7 @@ export const SettingsScreen = () => {
             <Switch value={reduxTheme === "dark"} onValueChange={handleThemeToggle} />
           </View>
 
-          <View style={styles.settingRow}>
+          <View style={[styles.settingRow, { borderBottomColor: theme.colors.separator }]}>
             <View style={styles.settingInfo}>
               <Text preset="subheading" tx="settingsScreen:language" />
               <Text
@@ -76,42 +75,40 @@ export const SettingsScreen = () => {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.1)",
-  },
   backButton: {
     padding: 8,
-  },
-  placeholder: {
-    width: 40,
   },
   container: {
     padding: 16,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    flex: 1,
-    textAlign: "center",
+  header: {
+    alignItems: "center",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  placeholder: {
+    width: 40,
   },
   section: {
     marginBottom: 24,
   },
-  settingRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.1)",
-  },
   settingInfo: {
     flex: 1,
+  },
+  settingRow: {
+    alignItems: "center",
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 16,
+  },
+  title: {
+    flex: 1,
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 })

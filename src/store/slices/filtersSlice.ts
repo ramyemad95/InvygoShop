@@ -50,4 +50,3 @@ const filtersSlice = createSlice({
 export const { setSearchQuery, setSelectedColors, toggleColor, setPriceRange, resetFilters } =
   filtersSlice.actions
 export default filtersSlice.reducer
-

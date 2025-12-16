@@ -1,10 +1,12 @@
-import React, { useEffect } from "react"
-import { Linking, Text } from "react-native"
-import { render, act } from "@testing-library/react-native"
+import { useEffect } from "react"
+import { Linking } from "react-native"
+import { act, render } from "@testing-library/react-native"
 import i18n from "i18next"
 
-import { formatDate, loadDateFnsLocale } from "../formatDate"
+import { Text } from "@/components/Text"
+
 import { delay } from "../delay"
+import { formatDate, loadDateFnsLocale } from "../formatDate"
 import { openLinkInBrowser } from "../openLinkInBrowser"
 import { useDebounce } from "../useDebounce"
 import { useIsMounted } from "../useIsMounted"
@@ -154,4 +156,3 @@ describe("utils", () => {
     expect(captures[captures.length - 1]).toBe(false)
   })
 })
-

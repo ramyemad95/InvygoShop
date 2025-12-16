@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from "axios"
+
 import { store } from "@/store"
 
 const API_TIMEOUT = 10000
@@ -65,4 +66,3 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient()
-

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState, type FC } from "react"
 import { Image, ImageProps, ImageSourcePropType } from "react-native"
+
 import { loadString, saveString } from "@/utils/storage"
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
@@ -10,7 +11,7 @@ interface CachedImageProps extends Omit<ImageProps, "source"> {
   cacheKey?: string
 }
 
-export const CachedImage: React.FC<CachedImageProps> = ({ source, cacheKey, ...props }) => {
+export const CachedImage: FC<CachedImageProps> = ({ source, cacheKey, ...props }) => {
   const [cachedUri, setCachedUri] = useState<string | null>(null)
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export const CachedImage: React.FC<CachedImageProps> = ({ source, cacheKey, ...p
             setCachedUri(uri)
             return
           }
-        } catch (e) {
+        } catch {
           // Invalid cache data, continue to bust cache
         }
       }
@@ -56,4 +57,3 @@ export const CachedImage: React.FC<CachedImageProps> = ({ source, cacheKey, ...p
 
   return <Image {...props} source={source} />
 }
-

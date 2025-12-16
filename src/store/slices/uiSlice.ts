@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
 import { loadString, saveString } from "@/utils/storage"
 
 type Theme = "light" | "dark"
@@ -41,4 +42,3 @@ const uiSlice = createSlice({
 
 export const { setTheme, setLanguage } = uiSlice.actions
 export default uiSlice.reducer
-
