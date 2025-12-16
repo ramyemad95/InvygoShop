@@ -1,0 +1,952 @@
+[
+  {
+    "brand": "Toyota",
+    "name": "Corolla 2022",
+    "price": 18500,
+    "main_image": "https://unsplash.com/photos/Vq8Fb7oP2qY",
+    "secondary_images": [
+      "https://unsplash.com/photos/3LWaFaZGgW0",
+      "https://unsplash.com/photos/SV17ouchi3k",
+      "https://unsplash.com/photos/OAHyXIPpgwo"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 38,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Toyota",
+    "name": "RAV4 2023",
+    "price": 31500,
+    "main_image": "https://unsplash.com/photos/bb6NaemzpGY",
+    "secondary_images": [
+      "https://unsplash.com/photos/l1kKeGQk6z4",
+      "https://unsplash.com/photos/Y5O7k0STxZI",
+      "https://unsplash.com/photos/BMYdlObzd8Q"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 64,
+    "available_colors": [
+      "White",
+      "Gray",
+      "Black",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Honda",
+    "name": "Civic 2022",
+    "price": 22000,
+    "main_image": "https://unsplash.com/photos/K9f9asOHAmw",
+    "secondary_images": [
+      "https://unsplash.com/photos/Cy0qwqsN92o",
+      "https://unsplash.com/photos/zaWltAJ_o8s",
+      "https://unsplash.com/photos/lDVE2j-UTnI"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 45,
+    "available_colors": [
+      "Black",
+      "White",
+      "Blue",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Honda",
+    "name": "CR-V 2023",
+    "price": 34500,
+    "main_image": "https://unsplash.com/photos/T_D-vzJu5SU",
+    "secondary_images": [
+      "https://unsplash.com/photos/5812eHZRKT4",
+      "https://unsplash.com/photos/o6XyyJ9rOXE",
+      "https://unsplash.com/photos/Py2b9jkhtb4"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 70,
+    "available_colors": [
+      "White",
+      "Silver",
+      "Black",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Nissan",
+    "name": "Sentra 2022",
+    "price": 19500,
+    "main_image": "https://unsplash.com/photos/IPKKY4SsvPY",
+    "secondary_images": [
+      "https://unsplash.com/photos/sLy-XtoW_To",
+      "https://unsplash.com/photos/y4wleyP4f1o",
+      "https://unsplash.com/photos/jxPJTN_W3YY"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 40,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Orange"
+    ]
+  },
+  {
+    "brand": "Nissan",
+    "name": "X-Trail 2023",
+    "price": 33500,
+    "main_image": "https://unsplash.com/photos/nFeSwTcV1aY",
+    "secondary_images": [
+      "https://unsplash.com/photos/hbQgmSJpJY0",
+      "https://unsplash.com/photos/04GivTLqocA",
+      "https://unsplash.com/photos/BBzOoRc-h7I"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 68,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "name": "Elantra 2023",
+    "price": 20500,
+    "main_image": "https://unsplash.com/photos/PnbG1SjYNg0",
+    "secondary_images": [
+      "https://unsplash.com/photos/_DL8USLb3kw",
+      "https://unsplash.com/photos/agO_N6RPW0U",
+      "https://unsplash.com/photos/qR-HEpB1mAU"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 42,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Hyundai",
+    "name": "Tucson 2023",
+    "price": 33000,
+    "main_image": "https://unsplash.com/photos/s40VRZ1HqXs",
+    "secondary_images": [
+      "https://unsplash.com/photos/_Xp1QW53Fz8",
+      "https://unsplash.com/photos/Zy4-nafMCZY",
+      "https://unsplash.com/photos/vH01aW7ir-Y"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 69,
+    "available_colors": [
+      "White",
+      "Gray",
+      "Black",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Kia",
+    "name": "K5 2023",
+    "price": 25500,
+    "main_image": "https://unsplash.com/photos/k0DO5oV4D0c",
+    "secondary_images": [
+      "https://unsplash.com/photos/Z1ERtrRJj70",
+      "https://unsplash.com/photos/bS86J4xzmbM",
+      "https://unsplash.com/photos/YM-koUozDMM"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 52,
+    "available_colors": [
+      "Black",
+      "White",
+      "Red",
+      "Silver"
+    ]
+  },
+  {
+    "brand": "Kia",
+    "name": "Sportage 2023",
+    "price": 32000,
+    "main_image": "https://unsplash.com/photos/DuZmHaeZM34",
+    "secondary_images": [
+      "https://unsplash.com/photos/UKLZbnXGWjQ",
+      "https://unsplash.com/photos/AituNvaSOGk",
+      "https://unsplash.com/photos/-LWqBbI4lis"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 66,
+    "available_colors": [
+      "White",
+      "Gray",
+      "Black",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Mazda",
+    "name": "Mazda 3 2022",
+    "price": 23500,
+    "main_image": "https://unsplash.com/photos/sPeDvgF_SeM",
+    "secondary_images": [
+      "https://unsplash.com/photos/ZGW_fZ5_GD4",
+      "https://unsplash.com/photos/1lWiEbexyvc",
+      "https://unsplash.com/photos/dXhODfsSp5A"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 49,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Mazda",
+    "name": "CX-5 2023",
+    "price": 34000,
+    "main_image": "https://unsplash.com/photos/YJlW6heZzUc",
+    "secondary_images": [
+      "https://unsplash.com/photos/qfe3RL4dt-Y",
+      "https://unsplash.com/photos/0nNpSatzIC8",
+      "https://unsplash.com/photos/rSoWgX1DsTA"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 72,
+    "available_colors": [
+      "White",
+      "Black",
+      "Blue",
+      "Silver"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "name": "Golf 2022",
+    "price": 24500,
+    "main_image": "https://unsplash.com/photos/N0h6ow055KY",
+    "secondary_images": [
+      "https://unsplash.com/photos/0CFxIHTD5T4",
+      "https://unsplash.com/photos/8Qz2UNvhma4",
+      "https://unsplash.com/photos/QMxYA9FUHG0"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 50,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Yellow"
+    ]
+  },
+  {
+    "brand": "Volkswagen",
+    "name": "Tiguan 2023",
+    "price": 35500,
+    "main_image": "https://unsplash.com/photos/xfYr5xEi0xU",
+    "secondary_images": [
+      "https://unsplash.com/photos/Km36esq8rY4",
+      "https://unsplash.com/photos/h5VbaB2t3Xo",
+      "https://unsplash.com/photos/WbjtAqSZ4Eg"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 74,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Ford",
+    "name": "Focus 2021",
+    "price": 17500,
+    "main_image": "https://unsplash.com/photos/W8IvFdsKsl8",
+    "secondary_images": [
+      "https://unsplash.com/photos/Q0M3Mt_3UDw",
+      "https://unsplash.com/photos/dpkwHK4j2Js",
+      "https://unsplash.com/photos/cktp9-mCH4Y"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 37,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Ford",
+    "name": "Explorer 2023",
+    "price": 44500,
+    "main_image": "https://unsplash.com/photos/WpolyKp9CYY",
+    "secondary_images": [
+      "https://unsplash.com/photos/oNtwnqSMZA0",
+      "https://unsplash.com/photos/__lAxgYLWHU",
+      "https://unsplash.com/photos/QcoWnyccR5I"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 92,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Chevrolet",
+    "name": "Malibu 2022",
+    "price": 23000,
+    "main_image": "https://unsplash.com/photos/efLCv1XwAg4",
+    "secondary_images": [
+      "https://unsplash.com/photos/caz0OSmpL58",
+      "https://unsplash.com/photos/NIHB3qVxU0E",
+      "https://unsplash.com/photos/N3FCay6SBzc"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 48,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Chevrolet",
+    "name": "Tahoe 2023",
+    "price": 61000,
+    "main_image": "https://unsplash.com/photos/AwRcfU8T4dg",
+    "secondary_images": [
+      "https://unsplash.com/photos/UbQv-WPok34",
+      "https://unsplash.com/photos/QYU04vILPLM",
+      "https://unsplash.com/photos/LJrVL3fThQg"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 125,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Brown"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "name": "3 Series 2023",
+    "price": 52000,
+    "main_image": "https://unsplash.com/photos/Vq8Fb7oP2qY",
+    "secondary_images": [
+      "https://unsplash.com/photos/3LWaFaZGgW0",
+      "https://unsplash.com/photos/SV17ouchi3k",
+      "https://unsplash.com/photos/OAHyXIPpgwo"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 120,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "BMW",
+    "name": "X5 2023",
+    "price": 78000,
+    "main_image": "https://unsplash.com/photos/bb6NaemzpGY",
+    "secondary_images": [
+      "https://unsplash.com/photos/l1kKeGQk6z4",
+      "https://unsplash.com/photos/Y5O7k0STxZI",
+      "https://unsplash.com/photos/BMYdlObzd8Q"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 175,
+    "available_colors": [
+      "Black",
+      "White",
+      "Silver",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Mercedes-Benz",
+    "name": "C-Class 2023",
+    "price": 56000,
+    "main_image": "https://unsplash.com/photos/K9f9asOHAmw",
+    "secondary_images": [
+      "https://unsplash.com/photos/Cy0qwqsN92o",
+      "https://unsplash.com/photos/zaWltAJ_o8s",
+      "https://unsplash.com/photos/lDVE2j-UTnI"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 135,
+    "available_colors": [
+      "Black",
+      "White",
+      "Silver",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Mercedes-Benz",
+    "name": "GLE 2023",
+    "price": 83000,
+    "main_image": "https://unsplash.com/photos/T_D-vzJu5SU",
+    "secondary_images": [
+      "https://unsplash.com/photos/5812eHZRKT4",
+      "https://unsplash.com/photos/o6XyyJ9rOXE",
+      "https://unsplash.com/photos/Py2b9jkhtb4"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 190,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "name": "A4 2023",
+    "price": 51000,
+    "main_image": "https://unsplash.com/photos/IPKKY4SsvPY",
+    "secondary_images": [
+      "https://unsplash.com/photos/sLy-XtoW_To",
+      "https://unsplash.com/photos/y4wleyP4f1o",
+      "https://unsplash.com/photos/jxPJTN_W3YY"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 125,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Audi",
+    "name": "Q5 2023",
+    "price": 61000,
+    "main_image": "https://unsplash.com/photos/nFeSwTcV1aY",
+    "secondary_images": [
+      "https://unsplash.com/photos/hbQgmSJpJY0",
+      "https://unsplash.com/photos/04GivTLqocA",
+      "https://unsplash.com/photos/BBzOoRc-h7I"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 150,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Tesla",
+    "name": "Model 3 2023",
+    "price": 43000,
+    "main_image": "https://unsplash.com/photos/PnbG1SjYNg0",
+    "secondary_images": [
+      "https://unsplash.com/photos/_DL8USLb3kw",
+      "https://unsplash.com/photos/agO_N6RPW0U",
+      "https://unsplash.com/photos/qR-HEpB1mAU"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 110,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Tesla",
+    "name": "Model Y 2023",
+    "price": 52000,
+    "main_image": "https://unsplash.com/photos/s40VRZ1HqXs",
+    "secondary_images": [
+      "https://unsplash.com/photos/_Xp1QW53Fz8",
+      "https://unsplash.com/photos/Zy4-nafMCZY",
+      "https://unsplash.com/photos/vH01aW7ir-Y"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 135,
+    "available_colors": [
+      "White",
+      "Black",
+      "Blue",
+      "Silver"
+    ]
+  },
+  {
+    "brand": "Volvo",
+    "name": "S60 2023",
+    "price": 47000,
+    "main_image": "https://unsplash.com/photos/k0DO5oV4D0c",
+    "secondary_images": [
+      "https://unsplash.com/photos/Z1ERtrRJj70",
+      "https://unsplash.com/photos/bS86J4xzmbM",
+      "https://unsplash.com/photos/YM-koUozDMM"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 105,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Volvo",
+    "name": "XC60 2023",
+    "price": 59000,
+    "main_image": "https://unsplash.com/photos/DuZmHaeZM34",
+    "secondary_images": [
+      "https://unsplash.com/photos/UKLZbnXGWjQ",
+      "https://unsplash.com/photos/AituNvaSOGk",
+      "https://unsplash.com/photos/-LWqBbI4lis"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 145,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Peugeot",
+    "name": "208 2022",
+    "price": 16500,
+    "main_image": "https://unsplash.com/photos/sPeDvgF_SeM",
+    "secondary_images": [
+      "https://unsplash.com/photos/ZGW_fZ5_GD4",
+      "https://unsplash.com/photos/1lWiEbexyvc",
+      "https://unsplash.com/photos/dXhODfsSp5A"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 34,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Peugeot",
+    "name": "3008 2023",
+    "price": 36500,
+    "main_image": "https://unsplash.com/photos/YJlW6heZzUc",
+    "secondary_images": [
+      "https://unsplash.com/photos/qfe3RL4dt-Y",
+      "https://unsplash.com/photos/0nNpSatzIC8",
+      "https://unsplash.com/photos/rSoWgX1DsTA"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 73,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "name": "Clio 2022",
+    "price": 15500,
+    "main_image": "https://unsplash.com/photos/N0h6ow055KY",
+    "secondary_images": [
+      "https://unsplash.com/photos/0CFxIHTD5T4",
+      "https://unsplash.com/photos/8Qz2UNvhma4",
+      "https://unsplash.com/photos/QMxYA9FUHG0"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 33,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Renault",
+    "name": "Duster 2023",
+    "price": 24500,
+    "main_image": "https://unsplash.com/photos/xfYr5xEi0xU",
+    "secondary_images": [
+      "https://unsplash.com/photos/Km36esq8rY4",
+      "https://unsplash.com/photos/h5VbaB2t3Xo",
+      "https://unsplash.com/photos/WbjtAqSZ4Eg"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 50,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Skoda",
+    "name": "Octavia 2023",
+    "price": 27500,
+    "main_image": "https://unsplash.com/photos/W8IvFdsKsl8",
+    "secondary_images": [
+      "https://unsplash.com/photos/Q0M3Mt_3UDw",
+      "https://unsplash.com/photos/dpkwHK4j2Js",
+      "https://unsplash.com/photos/cktp9-mCH4Y"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 55,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Skoda",
+    "name": "Kodiaq 2023",
+    "price": 39000,
+    "main_image": "https://unsplash.com/photos/WpolyKp9CYY",
+    "secondary_images": [
+      "https://unsplash.com/photos/oNtwnqSMZA0",
+      "https://unsplash.com/photos/__lAxgYLWHU",
+      "https://unsplash.com/photos/QcoWnyccR5I"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 78,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Mitsubishi",
+    "name": "Lancer 2021",
+    "price": 14500,
+    "main_image": "https://unsplash.com/photos/efLCv1XwAg4",
+    "secondary_images": [
+      "https://unsplash.com/photos/caz0OSmpL58",
+      "https://unsplash.com/photos/NIHB3qVxU0E",
+      "https://unsplash.com/photos/N3FCay6SBzc"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 30,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Mitsubishi",
+    "name": "Outlander 2023",
+    "price": 36000,
+    "main_image": "https://unsplash.com/photos/AwRcfU8T4dg",
+    "secondary_images": [
+      "https://unsplash.com/photos/UbQv-WPok34",
+      "https://unsplash.com/photos/QYU04vILPLM",
+      "https://unsplash.com/photos/LJrVL3fThQg"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 76,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Jeep",
+    "name": "Compass 2023",
+    "price": 34500,
+    "main_image": "https://unsplash.com/photos/Vq8Fb7oP2qY",
+    "secondary_images": [
+      "https://unsplash.com/photos/3LWaFaZGgW0",
+      "https://unsplash.com/photos/SV17ouchi3k",
+      "https://unsplash.com/photos/OAHyXIPpgwo"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 79,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Jeep",
+    "name": "Wrangler 2023",
+    "price": 52000,
+    "main_image": "https://unsplash.com/photos/bb6NaemzpGY",
+    "secondary_images": [
+      "https://unsplash.com/photos/l1kKeGQk6z4",
+      "https://unsplash.com/photos/Y5O7k0STxZI",
+      "https://unsplash.com/photos/BMYdlObzd8Q"
+    ],
+    "specs": "offroad",
+    "rent_price_per_day": 130,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Orange"
+    ]
+  },
+  {
+    "brand": "Land Rover",
+    "name": "Range Rover Evoque 2023",
+    "price": 62000,
+    "main_image": "https://unsplash.com/photos/K9f9asOHAmw",
+    "secondary_images": [
+      "https://unsplash.com/photos/Cy0qwqsN92o",
+      "https://unsplash.com/photos/zaWltAJ_o8s",
+      "https://unsplash.com/photos/lDVE2j-UTnI"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 175,
+    "available_colors": [
+      "Black",
+      "White",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Land Rover",
+    "name": "Defender 110 2023",
+    "price": 78000,
+    "main_image": "https://unsplash.com/photos/T_D-vzJu5SU",
+    "secondary_images": [
+      "https://unsplash.com/photos/5812eHZRKT4",
+      "https://unsplash.com/photos/o6XyyJ9rOXE",
+      "https://unsplash.com/photos/Py2b9jkhtb4"
+    ],
+    "specs": "offroad",
+    "rent_price_per_day": 210,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Lexus",
+    "name": "ES 300h 2023",
+    "price": 54000,
+    "main_image": "https://unsplash.com/photos/IPKKY4SsvPY",
+    "secondary_images": [
+      "https://unsplash.com/photos/sLy-XtoW_To",
+      "https://unsplash.com/photos/y4wleyP4f1o",
+      "https://unsplash.com/photos/jxPJTN_W3YY"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 140,
+    "available_colors": [
+      "Black",
+      "White",
+      "Silver",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Lexus",
+    "name": "RX 350 2023",
+    "price": 69000,
+    "main_image": "https://unsplash.com/photos/nFeSwTcV1aY",
+    "secondary_images": [
+      "https://unsplash.com/photos/hbQgmSJpJY0",
+      "https://unsplash.com/photos/04GivTLqocA",
+      "https://unsplash.com/photos/BBzOoRc-h7I"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 185,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Red"
+    ]
+  },
+  {
+    "brand": "Porsche",
+    "name": "Macan 2023",
+    "price": 72000,
+    "main_image": "https://unsplash.com/photos/PnbG1SjYNg0",
+    "secondary_images": [
+      "https://unsplash.com/photos/_DL8USLb3kw",
+      "https://unsplash.com/photos/agO_N6RPW0U",
+      "https://unsplash.com/photos/qR-HEpB1mAU"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 220,
+    "available_colors": [
+      "Black",
+      "White",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Porsche",
+    "name": "Cayenne 2023",
+    "price": 98000,
+    "main_image": "https://unsplash.com/photos/s40VRZ1HqXs",
+    "secondary_images": [
+      "https://unsplash.com/photos/_Xp1QW53Fz8",
+      "https://unsplash.com/photos/Zy4-nafMCZY",
+      "https://unsplash.com/photos/vH01aW7ir-Y"
+    ],
+    "specs": "business",
+    "rent_price_per_day": 260,
+    "available_colors": [
+      "Black",
+      "White",
+      "Silver",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Subaru",
+    "name": "Impreza 2022",
+    "price": 20500,
+    "main_image": "https://unsplash.com/photos/k0DO5oV4D0c",
+    "secondary_images": [
+      "https://unsplash.com/photos/Z1ERtrRJj70",
+      "https://unsplash.com/photos/bS86J4xzmbM",
+      "https://unsplash.com/photos/YM-koUozDMM"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 44,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Subaru",
+    "name": "Forester 2023",
+    "price": 32000,
+    "main_image": "https://unsplash.com/photos/DuZmHaeZM34",
+    "secondary_images": [
+      "https://unsplash.com/photos/UKLZbnXGWjQ",
+      "https://unsplash.com/photos/AituNvaSOGk",
+      "https://unsplash.com/photos/-LWqBbI4lis"
+    ],
+    "specs": "family",
+    "rent_price_per_day": 67,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Suzuki",
+    "name": "Swift 2022",
+    "price": 13500,
+    "main_image": "https://unsplash.com/photos/sPeDvgF_SeM",
+    "secondary_images": [
+      "https://unsplash.com/photos/ZGW_fZ5_GD4",
+      "https://unsplash.com/photos/1lWiEbexyvc",
+      "https://unsplash.com/photos/dXhODfsSp5A"
+    ],
+    "specs": "solo",
+    "rent_price_per_day": 28,
+    "available_colors": [
+      "White",
+      "Black",
+      "Red",
+      "Blue"
+    ]
+  },
+  {
+    "brand": "Suzuki",
+    "name": "Vitara 2023",
+    "price": 24000,
+    "main_image": "https://unsplash.com/photos/YJlW6heZzUc",
+    "secondary_images": [
+      "https://unsplash.com/photos/qfe3RL4dt-Y",
+      "https://unsplash.com/photos/0nNpSatzIC8",
+      "https://unsplash.com/photos/rSoWgX1DsTA"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 49,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Green"
+    ]
+  },
+  {
+    "brand": "Mini",
+    "name": "Cooper 2023",
+    "price": 31000,
+    "main_image": "https://unsplash.com/photos/N0h6ow055KY",
+    "secondary_images": [
+      "https://unsplash.com/photos/0CFxIHTD5T4",
+      "https://unsplash.com/photos/8Qz2UNvhma4",
+      "https://unsplash.com/photos/QMxYA9FUHG0"
+    ],
+    "specs": "couple",
+    "rent_price_per_day": 75,
+    "available_colors": [
+      "White",
+      "Black",
+      "Gray",
+      "Yellow"
+    ]
+  },
+  {
+    "brand": "Toyota",
+    "name": "Land Cruiser 2023",
+    "price": 85000,
+    "main_image": "https://unsplash.com/photos/xfYr5xEi0xU",
+    "secondary_images": [
+      "https://unsplash.com/photos/Km36esq8rY4",
+      "https://unsplash.com/photos/h5VbaB2t3Xo",
+      "https://unsplash.com/photos/WbjtAqSZ4Eg"
+    ],
+    "specs": "offroad",
+    "rent_price_per_day": 240,
+    "available_colors": [
+      "White",
+      "Black",
+      "Silver",
+      "Beige"
+    ]
+  }
+]
