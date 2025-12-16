@@ -74,7 +74,7 @@ export const CarDetailsScreen = () => {
           <View style={styles.placeholder} />
         </View>
         <View style={styles.centerContainer}>
-          <Text text="Car not found" />
+          <Text tx="carDetailsScreen:carNotFound" />
         </View>
       </Screen>
     )
@@ -116,9 +116,9 @@ export const CarDetailsScreen = () => {
                     styles.indicator,
                     {
                       backgroundColor: isActive
-                        ? theme.colors.palette.neutral100
+                        ? theme.colors.palette.neutral900
                         : theme.colors.palette.neutral400,
-                      width: isActive ? 24 : 8,
+                      width: 8,
                       opacity: isActive ? 1 : 0.5,
                     },
                   ]}
@@ -134,17 +134,22 @@ export const CarDetailsScreen = () => {
         <Text preset="subheading" text={`$${car.price.toLocaleString()}`} style={styles.price} />
         <Text
           preset="formHelper"
-          text={`Rent: $${car.rent_price_per_day}/day`}
+          tx="carDetailsScreen:rentPerDay"
+          txOptions={{ price: car.rent_price_per_day }}
           style={styles.rentPrice}
         />
 
         <View style={styles.specsContainer}>
-          <Text preset="formLabel" text="Specs:" />
+          <Text preset="formLabel" tx="carDetailsScreen:specs" />
           <Text text={car.specs} style={styles.specsValue} />
         </View>
 
         <View style={styles.colorsContainer}>
-          <Text preset="formLabel" text="Available Colors:" style={styles.colorsTitle} />
+          <Text
+            preset="formLabel"
+            tx="carDetailsScreen:availableColors"
+            style={styles.colorsTitle}
+          />
           <View style={styles.colorChips}>
             {car.available_colors.map((color) => (
               <Button
@@ -157,12 +162,12 @@ export const CarDetailsScreen = () => {
             ))}
           </View>
           {!selectedColor && (
-            <Text preset="formHelper" text="Please select a color" style={styles.errorText} />
+            <Text preset="formHelper" tx="carDetailsScreen:selectColor" style={styles.errorText} />
           )}
         </View>
 
         <Button
-          text="Buy Now"
+          tx="carDetailsScreen:buyNow"
           preset="filled"
           onPress={handleBuyPress}
           disabled={!selectedColor}
@@ -278,4 +283,3 @@ const styles = StyleSheet.create({
     padding: 32,
   },
 })
-

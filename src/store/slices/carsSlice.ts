@@ -20,10 +20,13 @@ const initialState: CarsState = {
   total: 0,
 }
 
-export const loadCars = createAsyncThunk("cars/loadCars", async (page: number = 1) => {
-  const result = await fetchCars(page)
-  return { ...result, page }
-})
+export const loadCars = createAsyncThunk(
+  "cars/loadCars",
+  async ({ page = 1, searchQuery = "" }: { page?: number; searchQuery?: string } = {}) => {
+    const result = await fetchCars(page, searchQuery)
+    return { ...result, page, searchQuery }
+  },
+)
 
 const carsSlice = createSlice({
   name: "cars",
@@ -38,7 +41,7 @@ const carsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadCars.pending, (state, action) => {
-        const page = action.meta.arg || 1
+        const page = action.meta.arg?.page || 1
         if (page === 1) {
           state.loading = true
           state.cars = []
@@ -55,7 +58,13 @@ const carsSlice = createSlice({
         loadCars.fulfilled,
         (
           state,
-          action: PayloadAction<{ cars: Car[]; total: number; hasMore: boolean; page: number }>,
+          action: PayloadAction<{
+            cars: Car[]
+            total: number
+            hasMore: boolean
+            page: number
+            searchQuery?: string
+          }>,
         ) => {
           const { cars, total, hasMore, page } = action.payload
           console.log("[Redux] loadCars fulfilled:", {

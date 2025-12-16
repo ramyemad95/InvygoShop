@@ -3,6 +3,7 @@ import * as Localization from "expo-localization"
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 import "intl-pluralrules"
+import { loadString } from "@/utils/storage"
 
 // if English isn't your default language, move Translations to the appropriate language file.
 import ar from "./ar"
@@ -13,7 +14,7 @@ import hi from "./hi"
 import ja from "./ja"
 import ko from "./ko"
 
-const fallbackLocale = "en-US"
+const fallbackLocale = "en"
 
 const systemLocales = Localization.getLocales()
 
@@ -32,15 +33,26 @@ const pickSupportedLocale: () => Localization.Locale | undefined = () => {
 }
 
 const locale = pickSupportedLocale()
+const resolvedLanguageTag = locale?.languageTag.split("-")[0] ?? fallbackLocale
 
-export let isRTL = false
+// Prefer stored user choice; fall back to detected language
+const storedLanguage = loadString("app.language") as string | null
+const initialLanguage = storedLanguage || resolvedLanguageTag
+
+export let isRTL = initialLanguage === "ar" || locale?.textDirection === "rtl"
+
+const applyRTL = (rtl: boolean) => {
+  I18nManager.allowRTL(rtl)
+  I18nManager.forceRTL(rtl)
+  I18nManager.swapLeftAndRightInRTL(rtl)
+  isRTL = rtl
+}
 
 // Need to set RTL ASAP to ensure the app is rendered correctly. Waiting for i18n to init is too late.
-if (locale?.languageTag && locale?.textDirection === "rtl") {
-  I18nManager.allowRTL(true)
-  isRTL = true
-} else {
-  I18nManager.allowRTL(false)
+applyRTL(isRTL)
+
+export const setRTLFromLanguage = (language: string) => {
+  applyRTL(language === "ar")
 }
 
 export const initI18n = async () => {
@@ -48,7 +60,7 @@ export const initI18n = async () => {
 
   await i18n.init({
     resources,
-    lng: locale?.languageTag ?? fallbackLocale,
+    lng: initialLanguage,
     fallbackLng: fallbackLocale,
     interpolation: {
       escapeValue: false,

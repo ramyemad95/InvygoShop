@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { View, StyleSheet, Modal, ScrollView } from "react-native"
 import { useAppTheme } from "@/theme/context"
 import { Car } from "@/types/car"
+import { translate } from "@/i18n/translate"
 import { Text } from "./Text"
 import { TextField } from "./TextField"
 import { Button } from "./Button"
@@ -27,13 +28,72 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [expiryDate, setExpiryDate] = useState("")
   const [cvv, setCvv] = useState("")
   const [isProcessing, setIsProcessing] = useState(false)
+  const [errors, setErrors] = useState<{
+    cardNumber?: string
+    cardHolder?: string
+    expiryDate?: string
+    cvv?: string
+  }>({})
+
+  const handleCardNumberChange = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 16)
+    const groups = digitsOnly.match(/.{1,4}/g) || []
+    setCardNumber(groups.join(" "))
+    if (errors.cardNumber) {
+      setErrors((prev) => ({ ...prev, cardNumber: undefined }))
+    }
+  }
+
+  const handleExpiryDateChange = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 4)
+    if (digitsOnly.length <= 2) {
+      setExpiryDate(digitsOnly)
+      if (errors.expiryDate) {
+        setErrors((prev) => ({ ...prev, expiryDate: undefined }))
+      }
+      return
+    }
+
+    const month = digitsOnly.slice(0, 2)
+    const year = digitsOnly.slice(2, 4)
+    setExpiryDate(`${month}/${year}`)
+    if (errors.expiryDate) {
+      setErrors((prev) => ({ ...prev, expiryDate: undefined }))
+    }
+  }
 
   const handleConfirm = () => {
-    // Validate form (simplified)
-    if (cardNumber && cardHolder && expiryDate && cvv) {
-      setIsProcessing(true)
-      onConfirm()
+    const newErrors: typeof errors = {}
+
+    const cardNumberDigits = cardNumber.replace(/\s/g, "")
+    if (cardNumberDigits.length !== 16) {
+      newErrors.cardNumber = translate("checkoutModal:cardNumberError")
     }
+
+    if (!cardHolder.trim()) {
+      newErrors.cardHolder = translate("checkoutModal:cardHolderError")
+    }
+
+    const expiryMatch = expiryDate.match(/^(\d{2})\/(\d{2})$/)
+    if (!expiryMatch) {
+      newErrors.expiryDate = translate("checkoutModal:expiryFormatError")
+    } else {
+      const month = Number(expiryMatch[1])
+      if (month < 1 || month > 12) {
+        newErrors.expiryDate = translate("checkoutModal:expiryMonthError")
+      }
+    }
+
+    if (!/^\d{3}$/.test(cvv)) {
+      newErrors.cvv = translate("checkoutModal:cvvError")
+    }
+
+    setErrors(newErrors)
+
+    if (Object.keys(newErrors).length > 0) return
+
+    setIsProcessing(true)
+    onConfirm()
   }
 
   return (
@@ -45,54 +105,88 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     >
       <View style={[styles.sheet, { backgroundColor: theme.colors.background }]}>
         <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-          <Text preset="heading" text="Checkout" style={styles.title} />
+          <Text preset="heading" tx="checkoutModal:title" style={styles.title} />
 
           <View style={styles.carSummary}>
             <Text preset="subheading" text={`${car.brand} ${car.name}`} />
-            <Text text={`Color: ${selectedColor}`} />
-            <Text preset="subheading" text={`Total: $${car.price.toLocaleString()}`} />
+            <Text tx="checkoutModal:color" txOptions={{ color: selectedColor }} />
+            <Text
+              preset="subheading"
+              tx="checkoutModal:total"
+              txOptions={{ price: car.price.toLocaleString() }}
+            />
           </View>
 
           <View style={styles.form}>
-            <Text preset="formLabel" text="Card Number" />
+            <Text preset="formLabel" tx="checkoutModal:cardNumber" />
             <TextField
               placeholder="1234 5678 9012 3456"
               value={cardNumber}
-              onChangeText={setCardNumber}
+              onChangeText={handleCardNumberChange}
               keyboardType="numeric"
               maxLength={19}
+              status={errors.cardNumber ? "error" : undefined}
+              helper={errors.cardNumber}
             />
 
-            <Text preset="formLabel" text="Card Holder Name" style={styles.label} />
-            <TextField placeholder="John Doe" value={cardHolder} onChangeText={setCardHolder} />
+            <Text preset="formLabel" tx="checkoutModal:cardHolder" style={styles.label} />
+            <TextField
+              placeholder="John Doe"
+              value={cardHolder}
+              onChangeText={(text) => {
+                setCardHolder(text)
+                if (errors.cardHolder) {
+                  setErrors((prev) => ({ ...prev, cardHolder: undefined }))
+                }
+              }}
+              status={errors.cardHolder ? "error" : undefined}
+              helper={errors.cardHolder}
+            />
 
             <View style={styles.row}>
               <View style={styles.halfWidth}>
-                <Text preset="formLabel" text="Expiry Date" style={styles.label} />
+                <Text preset="formLabel" tx="checkoutModal:expiryDate" style={styles.label} />
                 <TextField
                   placeholder="MM/YY"
                   value={expiryDate}
-                  onChangeText={setExpiryDate}
+                  onChangeText={handleExpiryDateChange}
+                  keyboardType="numeric"
                   maxLength={5}
+                  status={errors.expiryDate ? "error" : undefined}
+                  helper={errors.expiryDate}
                 />
               </View>
               <View style={styles.halfWidth}>
-                <Text preset="formLabel" text="CVV" style={styles.label} />
+                <Text preset="formLabel" tx="checkoutModal:cvv" style={styles.label} />
                 <TextField
                   placeholder="123"
                   value={cvv}
-                  onChangeText={setCvv}
+                  onChangeText={(text) => {
+                    const digitsOnly = text.replace(/\D/g, "").slice(0, 3)
+                    setCvv(digitsOnly)
+                    if (errors.cvv) {
+                      setErrors((prev) => ({ ...prev, cvv: undefined }))
+                    }
+                  }}
                   keyboardType="numeric"
                   maxLength={3}
+                  status={errors.cvv ? "error" : undefined}
+                  helper={errors.cvv}
                 />
               </View>
             </View>
           </View>
 
           <View style={styles.actions}>
-            <Button text="Cancel" onPress={onClose} style={styles.button} disabled={isProcessing} />
             <Button
-              text={isProcessing ? "Processing..." : "Confirm Buy"}
+              tx="common:cancel"
+              onPress={onClose}
+              style={styles.button}
+              disabled={isProcessing}
+            />
+            <Button
+              tx={isProcessing ? undefined : "checkoutModal:confirmBuy"}
+              text={isProcessing ? translate("checkoutModal:processing") : undefined}
               preset="filled"
               onPress={handleConfirm}
               style={styles.button}

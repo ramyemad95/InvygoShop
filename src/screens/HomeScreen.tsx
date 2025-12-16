@@ -1,13 +1,30 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import { View, StyleSheet, TouchableOpacity, Pressable, RefreshControl, FlatList, Animated } from "react-native"
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+  RefreshControl,
+  FlatList,
+  Animated,
+} from "react-native"
 import { useRouter } from "expo-router"
 import { useWindowDimensions } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet"
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+  type BottomSheetBackdropProps,
+} from "@gorhom/bottom-sheet"
 import { useAppTheme } from "@/theme/context"
 import { useAppDispatch, useAppSelector } from "@/store"
 import { loadCars, resetCars } from "@/store/slices/carsSlice"
-import { setSearchQuery, toggleColor, setPriceRange, resetFilters } from "@/store/slices/filtersSlice"
+import {
+  setSearchQuery,
+  toggleColor,
+  setPriceRange,
+  resetFilters,
+} from "@/store/slices/filtersSlice"
 import { Car } from "@/types/car"
 import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
@@ -16,6 +33,7 @@ import { Button } from "@/components/Button"
 import { CachedImage } from "@/components/CachedImage"
 import { Icon } from "@/components/Icon"
 import { useDebounce } from "@/utils/useDebounce"
+import { translate } from "@/i18n/translate"
 import { CarListItemShimmer } from "@/components/CarListItemShimmer"
 
 const CarListItem = React.memo(({ car, onPress }: { car: Car; onPress: () => void }) => {
@@ -35,11 +53,7 @@ const CarListItem = React.memo(({ car, onPress }: { car: Car; onPress: () => voi
         },
       ]}
     >
-      <CachedImage
-        source={{ uri: car.main_image }}
-        style={styles.carImage}
-        resizeMode="cover"
-      />
+      <CachedImage source={{ uri: car.main_image }} style={styles.carImage} resizeMode="cover" />
       <View style={styles.carInfo}>
         <Text preset="subheading" text={`${car.brand} ${car.name}`} />
         <Text preset="formHelper" text={`$${car.price.toLocaleString()}`} style={styles.price} />
@@ -68,28 +82,40 @@ export const HomeScreen = () => {
   const [page, setPage] = useState(1)
   const pullAnim = useRef(new Animated.Value(0)).current
   const [pullDistance, setPullDistance] = useState(0)
-  
+
   // Debug: Log state changes
   useEffect(() => {
-    console.log("[HomeScreen] 📈 State:", { 
-      carsCount: cars.length, 
-      loading, 
-      loadingMore, 
-      hasMore, 
-      total, 
-      page
+    console.log("[HomeScreen] 📈 State:", {
+      carsCount: cars.length,
+      loading,
+      loadingMore,
+      hasMore,
+      total,
+      page,
     })
   }, [cars.length, loading, loadingMore, hasMore, total, page])
 
   const bottomSheetRef = React.useRef<BottomSheet>(null)
-  const snapPoints = useMemo(() => ["50%", "75%"], [])
+  const snapPoints = useMemo(() => ["60%", "90%"], [])
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
   const isLoadingMoreRef = React.useRef(false)
   const hasScrolledRef = React.useRef(false)
+  const renderBackdrop = useCallback(
+    (props: BottomSheetBackdropProps) => (
+      <BottomSheetBackdrop
+        {...props}
+        opacity={0.8}
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        pressBehavior="close"
+      />
+    ),
+    [],
+  )
 
   useEffect(() => {
     dispatch(resetCars())
-    dispatch(loadCars(1))
+    dispatch(loadCars({ page: 1, searchQuery }))
     setPage(1)
     isLoadingMoreRef.current = false
     hasScrolledRef.current = false
@@ -97,11 +123,11 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     dispatch(setSearchQuery(debouncedSearchQuery))
-    // Note: Search/filter happens client-side on already loaded cars
-    // To reset and reload from API, uncomment below:
-    // dispatch(resetCars())
-    // dispatch(loadCars(1))
-    // setPage(1)
+    dispatch(resetCars())
+    dispatch(loadCars({ page: 1, searchQuery: debouncedSearchQuery }))
+    setPage(1)
+    isLoadingMoreRef.current = false
+    hasScrolledRef.current = false
   }, [debouncedSearchQuery, dispatch])
 
   const filteredCars = useMemo(() => {
@@ -111,9 +137,7 @@ export const HomeScreen = () => {
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter(
-        (car) =>
-          car.name.toLowerCase().includes(query) ||
-          car.brand.toLowerCase().includes(query),
+        (car) => car.name.toLowerCase().includes(query) || car.brand.toLowerCase().includes(query),
       )
     }
 
@@ -153,7 +177,10 @@ export const HomeScreen = () => {
 
   const [localMinPrice, setLocalMinPrice] = useState(priceRange.min?.toString() || "")
   const [localMaxPrice, setLocalMaxPrice] = useState(priceRange.max?.toString() || "")
-  const placeholderItems = useMemo(() => Array.from({ length: 6 }, (_, i) => `placeholder-${i}`), [])
+  const placeholderItems = useMemo(
+    () => Array.from({ length: 6 }, (_, i) => `placeholder-${i}`),
+    [],
+  )
 
   const handleCarPress = useCallback(
     (car: Car) => {
@@ -193,7 +220,7 @@ export const HomeScreen = () => {
     hasScrolledRef.current = false
     try {
       dispatch(resetCars())
-      await dispatch(loadCars(1)).unwrap()
+      await dispatch(loadCars({ page: 1, searchQuery })).unwrap()
     } catch (error) {
       console.error("Error refreshing cars:", error)
     } finally {
@@ -202,13 +229,13 @@ export const HomeScreen = () => {
   }, [dispatch])
 
   const handleLoadMore = useCallback(async () => {
-    console.log("[LoadMore] Called", { 
-      hasMore, 
-      loading, 
-      loadingMore, 
-      refreshing, 
-      page, 
-      isLoadingMore: isLoadingMoreRef.current
+    console.log("[LoadMore] Called", {
+      hasMore,
+      loading,
+      loadingMore,
+      refreshing,
+      page,
+      isLoadingMore: isLoadingMoreRef.current,
     })
     if (!hasScrolledRef.current) {
       console.log("[LoadMore] Blocked - no user scroll yet")
@@ -226,7 +253,7 @@ export const HomeScreen = () => {
     const nextPage = page + 1
     setPage(nextPage)
     try {
-      await dispatch(loadCars(nextPage)).unwrap()
+      await dispatch(loadCars({ page: nextPage, searchQuery })).unwrap()
       console.log("[LoadMore] Successfully loaded page", nextPage)
       // Reset immediately after successful load
       isLoadingMoreRef.current = false
@@ -239,8 +266,8 @@ export const HomeScreen = () => {
 
   const handleFilterButtonPress = useCallback(() => {
     if (bottomSheetIndex === -1) {
-      bottomSheetRef.current?.snapToIndex(0)
-      setBottomSheetIndex(0)
+      bottomSheetRef.current?.snapToIndex(1)
+      setBottomSheetIndex(1)
     } else {
       bottomSheetRef.current?.close()
       setBottomSheetIndex(-1)
@@ -248,9 +275,7 @@ export const HomeScreen = () => {
   }, [bottomSheetIndex])
 
   const renderCarItem = useCallback(
-    ({ item }: { item: Car }) => (
-      <CarListItem car={item} onPress={() => handleCarPress(item)} />
-    ),
+    ({ item }: { item: Car }) => <CarListItem car={item} onPress={() => handleCarPress(item)} />,
     [handleCarPress],
   )
 
@@ -258,18 +283,15 @@ export const HomeScreen = () => {
     <>
       <Screen preset="fixed" style={styles.container} contentContainerStyle={styles.screenContent}>
         <View style={styles.header}>
-          <Text preset="heading" text="Invygo Shop" style={styles.title} />
-          <TouchableOpacity
-            onPress={() => router.push("/settings")}
-            style={styles.settingsButton}
-          >
+          <Text preset="heading" tx="homeScreen:title" style={styles.title} />
+          <TouchableOpacity onPress={() => router.push("/settings")} style={styles.settingsButton}>
             <Icon icon="settings" size={24} />
           </TouchableOpacity>
         </View>
 
         <View style={styles.searchContainer}>
           <TextField
-            placeholder="Search cars..."
+            placeholder={translate("homeScreen:searchPlaceholder")}
             value={localSearchQuery}
             onChangeText={setLocalSearchQuery}
             containerStyle={styles.searchInput}
@@ -279,7 +301,7 @@ export const HomeScreen = () => {
             style={[styles.filterButton, { backgroundColor: theme.colors.palette.neutral300 }]}
           >
             <Icon icon="menu" size={20} />
-            <Text text="Filters" style={styles.filterButtonText} />
+            <Text tx="homeScreen:filters" style={styles.filterButtonText} />
           </TouchableOpacity>
         </View>
         <Animated.View
@@ -310,7 +332,11 @@ export const HomeScreen = () => {
             },
           ]}
         >
-          <Text text="Pull to refresh" preset="formHelper" style={styles.pullIndicatorText} />
+          <Text
+            tx="homeScreen:pullToRefresh"
+            preset="formHelper"
+            style={styles.pullIndicatorText}
+          />
         </Animated.View>
 
         {loading ? (
@@ -324,7 +350,7 @@ export const HomeScreen = () => {
           />
         ) : paginatedCars.length === 0 ? (
           <View style={[styles.centerContainer, contentPadding]}>
-            <Text text="No cars found" />
+            <Text tx="homeScreen:noCarsFound" />
           </View>
         ) : (
           <FlatList<Car>
@@ -361,7 +387,7 @@ export const HomeScreen = () => {
               <RefreshControl
                 refreshing={refreshing}
                 onRefresh={handleRefresh}
-                title="Pull to refresh"
+                title={translate("homeScreen:pullToRefresh")}
                 titleColor={theme.colors.palette.primary500}
                 tintColor={theme.colors.palette.primary500}
                 colors={[theme.colors.palette.primary500]}
@@ -384,27 +410,31 @@ export const HomeScreen = () => {
         ref={bottomSheetRef}
         index={bottomSheetIndex}
         snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
         enablePanDownToClose
         onChange={(index) => setBottomSheetIndex(index)}
         backgroundStyle={{ backgroundColor: theme.colors.background }}
-        bottomInset={insets.bottom}
         android_keyboardInputMode="adjustResize"
       >
-        <BottomSheetView style={styles.bottomSheetContent}>
-          <Text preset="heading" text="Filters" style={styles.filterTitle} />
+        <BottomSheetView style={[styles.bottomSheetContent, { paddingBottom: insets.bottom + 16 }]}>
+          <Text preset="heading" tx="homeScreen:filters" style={styles.filterTitle} />
 
           <View style={styles.filterSection}>
-            <Text preset="subheading" text="Price Range" style={styles.filterSectionTitle} />
+            <Text
+              preset="subheading"
+              tx="homeScreen:priceRange"
+              style={styles.filterSectionTitle}
+            />
             <View style={styles.priceInputs}>
               <TextField
-                placeholder="Min"
+                placeholder={translate("homeScreen:minPrice")}
                 value={localMinPrice}
                 onChangeText={setLocalMinPrice}
                 keyboardType="numeric"
                 containerStyle={styles.priceInput}
               />
               <TextField
-                placeholder="Max"
+                placeholder={translate("homeScreen:maxPrice")}
                 value={localMaxPrice}
                 onChangeText={setLocalMaxPrice}
                 keyboardType="numeric"
@@ -414,7 +444,7 @@ export const HomeScreen = () => {
           </View>
 
           <View style={styles.filterSection}>
-            <Text preset="subheading" text="Colors" style={styles.filterSectionTitle} />
+            <Text preset="subheading" tx="homeScreen:colors" style={styles.filterSectionTitle} />
             <View style={styles.colorChips}>
               {allColors.map((color) => (
                 <TouchableOpacity
@@ -446,9 +476,13 @@ export const HomeScreen = () => {
           </View>
 
           <View style={styles.filterActions}>
-            <Button text="Reset" onPress={handleResetFilters} style={styles.filterButton} />
             <Button
-              text="Apply"
+              tx="homeScreen:reset"
+              onPress={handleResetFilters}
+              style={styles.filterButton}
+            />
+            <Button
+              tx="homeScreen:apply"
               preset="filled"
               onPress={handleApplyFilters}
               style={styles.filterButton}
@@ -581,4 +615,3 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 })
-

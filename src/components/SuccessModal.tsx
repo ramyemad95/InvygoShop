@@ -25,9 +25,9 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ visible, onClose }) 
           ]}
         >
           <Text preset="heading" text="🎉" style={styles.emoji} />
-          <Text preset="heading" text="Congratulations!" style={styles.title} />
-          <Text text="You successfully bought the car!" style={styles.message} />
-          <Button text="OK" preset="filled" onPress={onClose} style={styles.button} />
+          <Text preset="heading" tx="successModal:title" style={styles.title} />
+          <Text tx="successModal:message" style={styles.message} />
+          <Button tx="common:ok" preset="filled" onPress={onClose} style={styles.button} />
         </View>
       </View>
     </Modal>
@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
   },
   emoji: {
     fontSize: 64,
+    lineHeight: 72,
+    textAlign: "center",
     marginBottom: 16,
   },
   title: {
@@ -66,4 +68,3 @@ const styles = StyleSheet.create({
     minWidth: 120,
   },
 })
-

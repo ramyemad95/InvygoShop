@@ -10,8 +10,8 @@ import {
   View,
   ViewStyle,
 } from "react-native"
+import { I18nManager } from "react-native"
 
-import { isRTL } from "@/i18n"
 import { translate } from "@/i18n/translate"
 import { useAppTheme } from "@/theme/context"
 import { $styles } from "@/theme/styles"
@@ -137,6 +137,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
     themed,
     theme: { colors },
   } = useAppTheme()
+  const rtl = I18nManager.isRTL
 
   const disabled = TextInputProps.editable === false || status === "disabled"
 
@@ -161,7 +162,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
   const $inputStyles: ThemedStyleArray<TextStyle> = [
     $inputStyle,
     disabled && { color: colors.textDim },
-    isRTL && { textAlign: "right" as TextStyle["textAlign"] },
+    rtl && { textAlign: "right" as TextStyle["textAlign"] },
     TextInputProps.multiline && { height: "auto" },
     $inputStyleOverride,
   ]

@@ -1,8 +1,16 @@
 import { useEffect, useMemo, useRef, useCallback } from "react"
-import { Animated, Image, ImageStyle, Platform, StyleProp, View, ViewStyle } from "react-native"
+import {
+  Animated,
+  Image,
+  ImageStyle,
+  Platform,
+  StyleProp,
+  View,
+  ViewStyle,
+  I18nManager,
+} from "react-native"
 
 import { iconRegistry } from "@/components/Icon"
-import { isRTL } from "@/i18n"
 import { useAppTheme } from "@/theme/context"
 import { $styles } from "@/theme/styles"
 import type { ThemedStyle } from "@/theme/types"
@@ -55,6 +63,7 @@ function SwitchInput(props: SwitchInputProps) {
     theme: { colors },
     themed,
   } = useAppTheme()
+  const rtl = I18nManager.isRTL
 
   const animate = useRef(new Animated.Value(on ? 1 : 0)) // Initial value is set based on isActive
   const opacity = useRef(new Animated.Value(0))
@@ -115,7 +124,7 @@ function SwitchInput(props: SwitchInputProps) {
     }
   })()
 
-  const rtlAdjustment = isRTL ? -1 : 1
+  const rtlAdjustment = rtl ? -1 : 1
   const $themedSwitchInner = useMemo(() => themed([$styles.toggleInner, $switchInner]), [themed])
 
   const offsetLeft = ($innerStyleOverride?.paddingStart ||
@@ -132,7 +141,7 @@ function SwitchInput(props: SwitchInputProps) {
 
   const outputRange =
     Platform.OS === "web"
-      ? isRTL
+      ? rtl
         ? [+(knobWidth || 0) + offsetRight, offsetLeft]
         : [offsetLeft, +(knobWidth || 0) + offsetRight]
       : [rtlAdjustment * offsetLeft, rtlAdjustment * (+(knobWidth || 0) + offsetRight)]

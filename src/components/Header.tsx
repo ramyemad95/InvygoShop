@@ -6,9 +6,9 @@ import {
   TouchableOpacityProps,
   View,
   ViewStyle,
+  I18nManager,
 } from "react-native"
 
-import { isRTL } from "@/i18n"
 import { translate } from "@/i18n/translate"
 import { useAppTheme } from "@/theme/context"
 import { $styles } from "@/theme/styles"
@@ -257,6 +257,7 @@ function HeaderAction(props: HeaderActionProps) {
   }
 
   if (icon) {
+    const rtl = I18nManager.isRTL
     return (
       <PressableIcon
         size={24}
@@ -264,7 +265,7 @@ function HeaderAction(props: HeaderActionProps) {
         color={iconColor}
         onPress={onPress}
         containerStyle={themed([$actionIconContainer, { backgroundColor }])}
-        style={isRTL ? { transform: [{ rotate: "180deg" }] } : {}}
+        style={rtl ? { transform: [{ rotate: "180deg" }] } : {}}
       />
     )
   }

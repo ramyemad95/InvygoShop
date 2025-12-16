@@ -1,9 +1,8 @@
 import { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, TextStyle, View, ViewStyle, I18nManager } from "react-native"
 
 import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
-import { isRTL } from "@/i18n"
 import { useAppTheme } from "@/theme/context"
 import { $styles } from "@/theme/styles"
 import type { ThemedStyle } from "@/theme/types"
@@ -74,7 +73,7 @@ const $welcomeFace: ImageStyle = {
   position: "absolute",
   bottom: -47,
   right: -80,
-  transform: [{ scaleX: isRTL ? -1 : 1 }],
+  transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
 }
 
 const $welcomeHeading: ThemedStyle<TextStyle> = ({ spacing }) => ({
