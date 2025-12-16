@@ -41,3 +41,4 @@ const uiSlice = createSlice({
 
 export const { setTheme, setLanguage } = uiSlice.actions
 export default uiSlice.reducer
+

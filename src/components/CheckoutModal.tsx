@@ -182,6 +182,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               tx="common:cancel"
               onPress={onClose}
               style={styles.button}
+              testID="checkout-cancel"
               disabled={isProcessing}
             />
             <Button
@@ -190,6 +191,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               preset="filled"
               onPress={handleConfirm}
               style={styles.button}
+              testID="checkout-confirm"
               disabled={isProcessing}
             />
           </View>
