@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 import { fetchCars } from "@/api/carsApi"
 import { Car } from "@/types/car"
+import { logger } from "@/utils/logger"
 
 interface CarsState {
   cars: Car[]
@@ -68,13 +69,6 @@ const carsSlice = createSlice({
           }>,
         ) => {
           const { cars, total, hasMore, page } = action.payload
-          console.log("[Redux] loadCars fulfilled:", {
-            page,
-            carsCount: cars.length,
-            total,
-            hasMore,
-            currentCarsCount: state.cars.length,
-          })
           if (page === 1) {
             state.loading = false
             state.cars = cars
@@ -84,10 +78,6 @@ const carsSlice = createSlice({
             const existingIds = new Set(state.cars.map((c) => `${c.brand}-${c.name}`))
             const newCars = cars.filter((c) => !existingIds.has(`${c.brand}-${c.name}`))
             state.cars = [...state.cars, ...newCars]
-            console.log("[Redux] Appended cars:", {
-              newCarsCount: newCars.length,
-              totalCarsNow: state.cars.length,
-            })
           }
           state.total = total
           state.hasMore = hasMore

@@ -1,7 +1,10 @@
 import { Car } from "@/types/car"
+import { logger } from "@/utils/logger"
+import { sanitizeSearchQuery, validateSearchQuery } from "@/utils/validation"
 
-// @ts-ignore - JSON require
-const carsData = require("../../data/cars.json")
+// Import JSON data with proper typing
+// Using require with type assertion for Metro bundler compatibility
+const carsData = require("../../data/cars.json") as Car[]
 
 const ITEMS_PER_PAGE = 15
 
@@ -15,12 +18,22 @@ export const fetchCars = (
   page: number = 1,
   searchQuery: string = "",
 ): Promise<{ cars: Car[]; total: number; hasMore: boolean }> => {
+  // Validate page number
+  const validPage = Math.max(1, Math.floor(page))
+
   return new Promise((resolve) => {
     setTimeout(
       () => {
+        // Validate and sanitize search query
+        const validation = validateSearchQuery(searchQuery)
+        if (!validation.isValid) {
+          logger.warn("[API] Invalid search query:", validation.error)
+        }
+        const sanitizedQuery = sanitizeSearchQuery(searchQuery)
+
         // Convert image URLs to direct image URLs
         // Using picsum.photos with seed based on car name for variety
-        const allCarsWithFixedImages: Car[] = (carsData as Car[]).map((car: Car, index: number) => {
+        const allCarsWithFixedImages: Car[] = carsData.map((car: Car, index: number) => {
           const seed = car.name.replace(/\s+/g, "").toLowerCase()
           return {
             ...car,
@@ -31,7 +44,7 @@ export const fetchCars = (
           }
         })
 
-        const normalizedQuery = searchQuery.trim().toLowerCase()
+        const normalizedQuery = sanitizedQuery.toLowerCase()
         const filteredCars =
           normalizedQuery.length > 0
             ? allCarsWithFixedImages.filter(
@@ -41,14 +54,14 @@ export const fetchCars = (
               )
             : allCarsWithFixedImages
 
-        const startIndex = (page - 1) * ITEMS_PER_PAGE
+        const startIndex = (validPage - 1) * ITEMS_PER_PAGE
         const endIndex = startIndex + ITEMS_PER_PAGE
         const paginatedCars = filteredCars.slice(startIndex, endIndex)
         const total = filteredCars.length
         const hasMore = endIndex < total
 
-        console.log(
-          `[API] Loading page ${page}: ${paginatedCars.length} items (${startIndex}-${endIndex - 1} of ${total})`,
+        logger.debug(
+          `[API] Loading page ${validPage}: ${paginatedCars.length} items (${startIndex}-${endIndex - 1} of ${total})`,
         )
 
         resolve({
@@ -57,7 +70,7 @@ export const fetchCars = (
           hasMore,
         })
       },
-      page === 1 ? 800 : 2000,
+      validPage === 1 ? 800 : 2000,
     ) // Simulate network delay: 800ms for initial load, 2s for pagination
   })
 }

@@ -35,7 +35,9 @@ import {
 } from "@/store/slices/filtersSlice"
 import { useAppTheme } from "@/theme/context"
 import { Car } from "@/types/car"
+import { logger } from "@/utils/logger"
 import { useDebounce } from "@/utils/useDebounce"
+import { sanitizeNumericInput, sanitizeSearchQuery, validatePriceRange } from "@/utils/validation"
 
 const CarListItem = memo(({ car, onPress }: { car: Car; onPress: () => void }) => {
   const { theme } = useAppTheme()
@@ -84,18 +86,6 @@ export const HomeScreen = () => {
   const pullAnim = useRef(new Animated.Value(0)).current
   const [, setPullDistance] = useState(0)
 
-  // Debug: Log state changes
-  useEffect(() => {
-    console.log("[HomeScreen] 📈 State:", {
-      carsCount: cars.length,
-      loading,
-      loadingMore,
-      hasMore,
-      total,
-      page,
-    })
-  }, [cars.length, loading, loadingMore, hasMore, total, page])
-
   const bottomSheetRef = useRef<BottomSheet>(null)
   const snapPoints = useMemo(() => ["60%", "90%"], [])
   const [bottomSheetIndex, setBottomSheetIndex] = useState(-1)
@@ -123,9 +113,10 @@ export const HomeScreen = () => {
   }, [dispatch, searchQuery])
 
   useEffect(() => {
-    dispatch(setSearchQuery(debouncedSearchQuery))
+    const sanitizedQuery = sanitizeSearchQuery(debouncedSearchQuery)
+    dispatch(setSearchQuery(sanitizedQuery))
     dispatch(resetCars())
-    dispatch(loadCars({ page: 1, searchQuery: debouncedSearchQuery }))
+    dispatch(loadCars({ page: 1, searchQuery: sanitizedQuery }))
     setPage(1)
     isLoadingMoreRef.current = false
     hasScrolledRef.current = false
@@ -192,10 +183,19 @@ export const HomeScreen = () => {
   )
 
   const handleApplyFilters = () => {
+    const minPrice = sanitizeNumericInput(localMinPrice)
+    const maxPrice = sanitizeNumericInput(localMaxPrice)
+
+    const validation = validatePriceRange(minPrice, maxPrice)
+    if (!validation.isValid) {
+      logger.warn("Invalid price range:", validation.error)
+      // Still apply filters but log the warning
+    }
+
     dispatch(
       setPriceRange({
-        min: localMinPrice ? Number(localMinPrice) : null,
-        max: localMaxPrice ? Number(localMaxPrice) : null,
+        min: minPrice,
+        max: maxPrice,
       }),
     )
     setPage(1) // Reset to first page when filters change
@@ -221,43 +221,31 @@ export const HomeScreen = () => {
       dispatch(resetCars())
       await dispatch(loadCars({ page: 1, searchQuery })).unwrap()
     } catch (error) {
-      console.error("Error refreshing cars:", error)
+      logger.error("Error refreshing cars:", error)
     } finally {
       setRefreshing(false)
     }
   }, [dispatch, searchQuery])
 
   const handleLoadMore = useCallback(async () => {
-    console.log("[LoadMore] Called", {
-      hasMore,
-      loading,
-      loadingMore,
-      refreshing,
-      page,
-      isLoadingMore: isLoadingMoreRef.current,
-    })
     if (!hasScrolledRef.current) {
-      console.log("[LoadMore] Blocked - no user scroll yet")
       return
     }
 
     // Prevent multiple simultaneous loads
     if (isLoadingMoreRef.current || !hasMore || loading || loadingMore || refreshing) {
-      console.log("[LoadMore] Blocked by guard")
       return
     }
 
-    console.log("[LoadMore] Loading page", page + 1)
     isLoadingMoreRef.current = true
     const nextPage = page + 1
     setPage(nextPage)
     try {
       await dispatch(loadCars({ page: nextPage, searchQuery })).unwrap()
-      console.log("[LoadMore] Successfully loaded page", nextPage)
       // Reset immediately after successful load
       isLoadingMoreRef.current = false
     } catch (error) {
-      console.error("Error loading more cars:", error)
+      logger.error("Error loading more cars:", error)
       setPage((prev) => prev - 1) // Revert page on error
       isLoadingMoreRef.current = false
     }
@@ -360,7 +348,6 @@ export const HomeScreen = () => {
             numColumns={isTablet ? 2 : 1}
             contentContainerStyle={[styles.listContent, contentPadding]}
             onEndReached={() => {
-              console.log("[FlatList] onEndReached fired")
               handleLoadMore()
             }}
             onEndReachedThreshold={0.3}
@@ -373,13 +360,11 @@ export const HomeScreen = () => {
 
               if (offsetY > 40 && !hasScrolledRef.current) {
                 hasScrolledRef.current = true
-                console.log("[FlatList] Scroll detected, enabling load more")
               }
             }}
             onMomentumScrollBegin={() => {
               if (!hasScrolledRef.current) {
                 hasScrolledRef.current = true
-                console.log("[FlatList] Momentum scroll detected, enabling load more")
               }
             }}
             refreshControl={

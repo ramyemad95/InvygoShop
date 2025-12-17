@@ -43,6 +43,8 @@ export enum ErrorType {
   HANDLED = "Handled",
 }
 
+import { logger } from "./logger"
+
 /**
  * Manually report a handled error.
  */
@@ -50,8 +52,8 @@ export const reportCrash = (error: Error, type: ErrorType = ErrorType.FATAL) => 
   if (__DEV__) {
     // Log to console and Reactotron in development
     const message = error.message || "Unknown"
-    console.error(error)
-    console.log(message, type)
+    logger.error(error)
+    logger.log(message, type)
   } else {
     // In production, utilize crash reporting service of choice below:
     // RN
