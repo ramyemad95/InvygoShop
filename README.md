@@ -19,19 +19,19 @@ A modern, cross-platform car shopping application built with React Native and Ex
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.03.png" width="200" alt="Screenshot 1" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.06.png" width="200" alt="Screenshot 2" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.11.png" width="200" alt="Screenshot 3" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.13.png" width="200" alt="Screenshot 4" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.21.png" width="200" alt="Screenshot 5" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.24.png" width="200" alt="Screenshot 6" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.34.png" width="200" alt="Screenshot 7" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.10.png" width="200" alt="Screenshot 8" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.37.png" width="200" alt="Screenshot 9" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.43.png" width="200" alt="Screenshot 10" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.47.png" width="200" alt="Screenshot 11" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.49.png" width="200" alt="Screenshot 12" />
-  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.52.png" width="200" alt="Screenshot 13" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.03.png" width="200" alt="Home Screen - Car Listings" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.06.png" width="200" alt="Home Screen - Filtered Results" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.11.png" width="200" alt="Car Details Screen" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.13.png" width="200" alt="Car Details - Image Gallery" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.21.png" width="200" alt="Search Functionality" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.24.png" width="200" alt="Filter Options" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.34.png" width="200" alt="Checkout Modal" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.10.png" width="200" alt="Payment Form" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.37.png" width="200" alt="Dark Mode - Home Screen" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.43.png" width="200" alt="Dark Mode - Car Details" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.47.png" width="200" alt="Settings Screen" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.49.png" width="200" alt="Arabic RTL Support" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.52.png" width="200" alt="Pull to Refresh" />
 </div>
 
 ## 🛠 Tech Stack
