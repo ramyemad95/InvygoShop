@@ -16,6 +16,24 @@ A modern, cross-platform car shopping application built with React Native and Ex
 - **Pull to Refresh**: Refresh car listings with pull-to-refresh gesture
 - **Error Handling**: Comprehensive error boundaries and user-friendly error messages
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.03.png" width="200" alt="Screenshot 1" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.06.png" width="200" alt="Screenshot 2" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.11.png" width="200" alt="Screenshot 3" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.13.png" width="200" alt="Screenshot 4" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.21.png" width="200" alt="Screenshot 5" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.24.png" width="200" alt="Screenshot 6" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.18.34.png" width="200" alt="Screenshot 7" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.10.png" width="200" alt="Screenshot 8" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.37.png" width="200" alt="Screenshot 9" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.43.png" width="200" alt="Screenshot 10" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.47.png" width="200" alt="Screenshot 11" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.49.png" width="200" alt="Screenshot 12" />
+  <img src="screenshots/Simulator Screenshot - iPhone 16 Pro Max - 2025-12-17 at 14.19.52.png" width="200" alt="Screenshot 13" />
+</div>
+
 ## 🛠 Tech Stack
 
 - **Framework**: React Native 0.81.5 with Expo SDK 54
@@ -67,6 +85,7 @@ npm run start
 ```
 
 Then:
+
 - Press `i` for iOS simulator
 - Press `a` for Android emulator
 - Scan QR code with Expo Go app on your device
@@ -148,6 +167,7 @@ The app uses Redux Toolkit for state management with three main slices:
 ### Navigation
 
 File-based routing with Expo Router:
+
 - `/` - Splash screen
 - `/home` - Main car listing screen
 - `/car-details` - Car detail view
@@ -162,6 +182,7 @@ File-based routing with Expo Router:
 ### API Layer
 
 The app uses a simulated API (`carsApi.ts`) that:
+
 - Simulates network delays
 - Provides pagination support
 - Supports search functionality
@@ -210,6 +231,7 @@ npm run depcruise
 ## 🎨 Theming
 
 The app supports both light and dark themes with:
+
 - Dynamic color schemes
 - Typography system
 - Spacing system
@@ -220,10 +242,12 @@ Users can toggle themes in the Settings screen.
 ## 🌍 Internationalization
 
 Currently supports:
+
 - English (en)
 - Arabic (ar) with RTL support
 
 Translation files are located in `src/i18n/`. To add a new language:
+
 1. Create a new translation file (e.g., `fr.ts`)
 2. Add translations following the existing structure
 3. Update `src/i18n/index.ts` to include the new language
@@ -249,6 +273,7 @@ Translation files are located in `src/i18n/`. To add a new language:
 ### Environment Variables
 
 The app uses environment-specific configurations:
+
 - `config.base.ts` - Base configuration
 - `config.dev.ts` - Development configuration
 - `config.prod.ts` - Production configuration
@@ -256,6 +281,7 @@ The app uses environment-specific configurations:
 ### App Configuration
 
 Main app configuration is in `app.json` and `app.config.ts`:
+
 - App name, version, and bundle identifiers
 - Platform-specific settings
 - Plugins and permissions
@@ -265,6 +291,7 @@ Main app configuration is in `app.json` and `app.config.ts`:
 ### Reactotron
 
 In development mode, Reactotron is available for:
+
 - Redux state inspection
 - Network request monitoring
 - Logging and debugging
