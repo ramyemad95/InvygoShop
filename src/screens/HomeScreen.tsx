@@ -76,7 +76,7 @@ export const HomeScreen = () => {
   const isTablet = width >= 768
   const contentPadding = useMemo(() => ({ paddingBottom: insets.bottom + 32 }), [insets.bottom])
 
-  const { cars, loading, loadingMore, hasMore, total } = useAppSelector((state) => state.cars)
+  const { cars, loading, loadingMore, hasMore } = useAppSelector((state) => state.cars)
   const { searchQuery, selectedColors, priceRange } = useAppSelector((state) => state.filters)
 
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery)

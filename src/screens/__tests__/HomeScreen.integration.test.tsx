@@ -1,15 +1,15 @@
-import React from "react"
-import { render, fireEvent, waitFor, act } from "@testing-library/react-native"
-import { Provider } from "react-redux"
-import { configureStore } from "@reduxjs/toolkit"
 import { useRouter } from "expo-router"
+import { configureStore } from "@reduxjs/toolkit"
+import { render, fireEvent, waitFor, act } from "@testing-library/react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
+import { Provider } from "react-redux"
 
-import { HomeScreen } from "../HomeScreen"
+import { fetchCars } from "@/api/carsApi"
 import carsReducer from "@/store/slices/carsSlice"
 import filtersReducer from "@/store/slices/filtersSlice"
 import uiReducer from "@/store/slices/uiSlice"
-import { fetchCars } from "@/api/carsApi"
+
+import { HomeScreen } from "../HomeScreen"
 
 // Mock dependencies
 jest.mock("expo-router", () => ({
@@ -123,7 +123,7 @@ jest.mock("@gorhom/bottom-sheet", () => {
   const { View } = require("react-native")
 
   const BottomSheetComponent = React.forwardRef(
-    ({ children, index = -1, onChange, backdropComponent, ...props }: any, ref: any) => {
+    ({ children, index = -1, onChange, backdropComponent }: any, ref: any) => {
       const [currentIndex, setCurrentIndex] = React.useState(index)
 
       React.useImperativeHandle(ref, () => ({
@@ -182,7 +182,6 @@ jest.mock("react-native-safe-area-context", () => ({
 }))
 
 jest.mock("@/components/Icon", () => {
-  const React = require("react")
   const { View } = require("react-native")
   return {
     Icon: ({ icon, size, ...props }: any) => (
@@ -194,8 +193,10 @@ jest.mock("@/components/Icon", () => {
 jest.mock("@/components/CachedImage", () => {
   const React = require("react")
   const { Image } = require("react-native")
+  const CachedImage = React.forwardRef((props: any, ref: any) => <Image {...props} ref={ref} />)
+  CachedImage.displayName = "CachedImage"
   return {
-    CachedImage: React.forwardRef((props: any, ref: any) => <Image {...props} ref={ref} />),
+    CachedImage,
   }
 })
 
@@ -203,15 +204,17 @@ jest.mock("@/components/Text", () => {
   const React = require("react")
   const { Text: RNText } = require("react-native")
   const { translate } = require("@/i18n/translate")
+  const Text = React.forwardRef(({ tx, text, children, ...props }: any, ref: any) => {
+    const displayText = tx ? translate(tx, props.txOptions) : text || children
+    return (
+      <RNText ref={ref} {...props}>
+        {displayText}
+      </RNText>
+    )
+  })
+  Text.displayName = "Text"
   return {
-    Text: React.forwardRef(({ tx, text, children, ...props }: any, ref: any) => {
-      const displayText = tx ? translate(tx, props.txOptions) : text || children
-      return (
-        <RNText ref={ref} {...props}>
-          {displayText}
-        </RNText>
-      )
-    }),
+    Text,
   }
 })
 
@@ -404,7 +407,7 @@ describe("HomeScreen Integration Tests", () => {
       )
 
       const store = createMockStore()
-      const { queryByText } = render(
+      render(
         <SafeAreaProvider>
           <Provider store={store}>
             <HomeScreen />

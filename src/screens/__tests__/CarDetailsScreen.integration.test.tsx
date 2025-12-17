@@ -1,9 +1,8 @@
-import React from "react"
-import { render, fireEvent, waitFor, act } from "@testing-library/react-native"
-import { Provider } from "react-redux"
-import { configureStore } from "@reduxjs/toolkit"
 import { useRouter, useLocalSearchParams } from "expo-router"
+import { configureStore } from "@reduxjs/toolkit"
+import { render, fireEvent, waitFor, act } from "@testing-library/react-native"
 import { SafeAreaProvider } from "react-native-safe-area-context"
+import { Provider } from "react-redux"
 
 // Import reducers first
 import carsReducer from "@/store/slices/carsSlice"
@@ -113,9 +112,9 @@ jest.mock("@react-navigation/native", () => ({
 }))
 
 jest.mock("@/components/Screen", () => {
-  const React = require("react")
   const RN = require("react-native")
   // Screen is a regular function component, not forwardRef
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function Screen({ children, preset, ...props }: any) {
     // Screen uses KeyboardAwareScrollView internally, but for testing we'll simplify
     if (preset === "fixed") {
@@ -135,7 +134,6 @@ jest.mock("react-native-safe-area-context", () => ({
 }))
 
 jest.mock("@/components/Icon", () => {
-  const React = require("react")
   const { View } = require("react-native")
   return {
     Icon: ({ icon, size, ...props }: any) => (
@@ -205,21 +203,21 @@ jest.mock("@/components/Text", () => {
 })
 
 jest.mock("@/components/Button", () => {
-  const React = require("react")
   const { Pressable, Text: RNText } = require("react-native")
   const { translate } = require("@/i18n/translate")
 
   // Button doesn't use forwardRef, it's a regular function component
   // Simplified mock - use RNText directly to avoid circular dependency
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function Button({
     tx,
     text,
     children,
     disabled,
     onPress,
-    preset,
+    preset: _preset,
     style,
-    textStyle,
+    textStyle: _textStyle,
     ...props
   }: any) {
     let displayText = ""
@@ -292,17 +290,10 @@ jest.mock("@/components/TextField", () => {
 
 jest.mock("@/components/CheckoutModal", () => {
   const React = require("react")
-  const { View, Modal, Text: RNText, TextInput, ScrollView, Pressable } = require("react-native")
+  const { View, Modal, Text: RNText, TextInput, Pressable } = require("react-native")
   const { translate } = require("@/i18n/translate")
 
-  const CheckoutModalComponent = ({
-    visible,
-    car,
-    selectedColor,
-    onConfirm,
-    onClose,
-    ...props
-  }: any) => {
+  const CheckoutModalComponent = ({ visible, car, selectedColor, onConfirm, onClose }: any) => {
     const [cardNumber, setCardNumber] = React.useState("")
     const [cardHolder, setCardHolder] = React.useState("")
     const [expiryDate, setExpiryDate] = React.useState("")
@@ -334,10 +325,12 @@ jest.mock("@/components/CheckoutModal", () => {
     if (!visible) return null
     return (
       <Modal visible={visible} transparent animationType="slide">
+        {/* eslint-disable react-native/no-inline-styles */}
         <View
           testID="checkout-modal"
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
+          {/* eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals */}
           <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, minWidth: 300 }}>
             <RNText>{translate("checkoutModal:title")}</RNText>
             <RNText>{translate("checkoutModal:color", { color: selectedColor })}</RNText>
@@ -390,18 +383,19 @@ jest.mock("@/components/CheckoutModal", () => {
 })
 
 jest.mock("@/components/SuccessModal", () => {
-  const React = require("react")
   const { View, Modal, Text: RNText, Pressable } = require("react-native")
   const { translate } = require("@/i18n/translate")
 
-  const SuccessModalComponent = ({ visible, onClose, ...props }: any) => {
+  const SuccessModalComponent = ({ visible, onClose }: any) => {
     if (!visible) return null
     return (
       <Modal visible={visible} transparent animationType="fade">
+        {/* eslint-disable react-native/no-inline-styles */}
         <View
           testID="success-modal"
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
+          {/* eslint-disable-next-line react-native/no-inline-styles, react-native/no-color-literals */}
           <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10 }}>
             <RNText>{translate("successModal:title")}</RNText>
             <RNText>{translate("successModal:message")}</RNText>
@@ -471,7 +465,7 @@ describe("CarDetailsScreen Integration Tests", () => {
   describe("Checkout Flow", () => {
     it("should not allow checkout without selecting a color", async () => {
       const store = createMockStore()
-      const { getByText, queryByText } = render(
+      const { getByText } = render(
         <SafeAreaProvider>
           <Provider store={store}>
             <CarDetailsScreen />
@@ -558,7 +552,7 @@ describe("CarDetailsScreen Integration Tests", () => {
 
     it("should validate checkout form fields", async () => {
       const store = createMockStore()
-      const { getByText, getByPlaceholderText, getByTestId } = render(
+      const { getByText, getByTestId } = render(
         <SafeAreaProvider>
           <Provider store={store}>
             <CarDetailsScreen />
@@ -635,7 +629,7 @@ describe("CarDetailsScreen Integration Tests", () => {
 
     it("should show success modal after successful checkout", async () => {
       const store = createMockStore()
-      const { getByText, getByPlaceholderText, getByTestId } = render(
+      const { getByText, getByTestId } = render(
         <SafeAreaProvider>
           <Provider store={store}>
             <CarDetailsScreen />
@@ -694,7 +688,7 @@ describe("CarDetailsScreen Integration Tests", () => {
 
     it("should navigate back to home after closing success modal", async () => {
       const store = createMockStore()
-      const { getByText, getByPlaceholderText, getByTestId } = render(
+      const { getByText, getByTestId } = render(
         <SafeAreaProvider>
           <Provider store={store}>
             <CarDetailsScreen />

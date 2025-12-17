@@ -3,8 +3,6 @@
  * This prevents console statements from running in production builds
  */
 
-type LogLevel = "log" | "error" | "warn" | "info" | "debug"
-
 interface Logger {
   log: (...args: unknown[]) => void
   error: (...args: unknown[]) => void
@@ -35,4 +33,3 @@ const createLogger = (): Logger => {
 }
 
 export const logger = createLogger()
-

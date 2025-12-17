@@ -1,3 +1,5 @@
+import { logger } from "./logger"
+
 /**
  * If you're using Sentry
  *   Expo https://docs.expo.dev/guides/using-sentry/
@@ -42,8 +44,6 @@ export enum ErrorType {
    */
   HANDLED = "Handled",
 }
-
-import { logger } from "./logger"
 
 /**
  * Manually report a handled error.

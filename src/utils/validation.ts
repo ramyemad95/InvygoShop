@@ -93,4 +93,3 @@ export function validatePriceRange(
 
   return { isValid: true }
 }
-

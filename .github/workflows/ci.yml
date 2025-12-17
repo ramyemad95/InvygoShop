@@ -34,7 +34,7 @@ jobs:
       - name: Type check
         run: npm run compile
 
-      - name: Run tests with coverage
+      - name: Run all tests (unit, integration, snapshot) with coverage
         run: npm test -- --coverage --watchAll=false
 
       - name: Display coverage summary
