@@ -321,20 +321,11 @@ The app includes error boundaries to catch and display React errors gracefully.
 - Write tests for new features
 - Update documentation as needed
 
-## 📄 License
-
-This project is private and proprietary.
-
 ## 🙏 Acknowledgments
 
 - Built with [Ignite](https://github.com/infinitered/ignite) boilerplate
 - Uses [Expo](https://expo.dev/) for React Native development
 - Icons and images from various sources
 
-## 📞 Support
 
-For issues, questions, or contributions, please open an issue on the repository.
-
----
-
-Made with ❤️ using React Native and Expo
+Made by Ramy Mehanna
