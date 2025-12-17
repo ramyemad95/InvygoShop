@@ -140,7 +140,13 @@ describe("carsSlice", () => {
     const state = carsReducer(
       initialState,
       loadCars.fulfilled(
-        { cars: [{ ...sampleCar, name: "Model 3" }], total: 2, hasMore: false, page: 1, searchQuery: "" },
+        {
+          cars: [{ ...sampleCar, name: "Model 3" }],
+          total: 2,
+          hasMore: false,
+          page: 1,
+          searchQuery: "",
+        },
         "req2",
         { page: 1, searchQuery: "" },
       ),
