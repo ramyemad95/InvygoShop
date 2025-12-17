@@ -111,6 +111,46 @@ describe("carsSlice", () => {
     expect(state.loadingMore).toBe(true)
   })
 
+  it("handles pending state for page without page arg", () => {
+    const state = carsReducer(undefined, loadCars.pending("req", {}))
+    expect(state.loading).toBe(true)
+  })
+
+  it("handles pending state with undefined arg", () => {
+    const state = carsReducer(undefined, loadCars.pending("req", undefined))
+    expect(state.loading).toBe(true)
+  })
+
+  it("handles page arg as undefined in pending", () => {
+    const action = loadCars.pending("req", { page: undefined, searchQuery: "" })
+    const state = carsReducer(undefined, action)
+    expect(state.loading).toBe(true)
+  })
+
+  it("handles fulfilled with page 1 replacing existing cars", () => {
+    const initialState = carsReducer(
+      undefined,
+      loadCars.fulfilled(
+        { cars: [sampleCar], total: 1, hasMore: false, page: 1, searchQuery: "" },
+        "req",
+        { page: 1, searchQuery: "" },
+      ),
+    )
+
+    const state = carsReducer(
+      initialState,
+      loadCars.fulfilled(
+        { cars: [{ ...sampleCar, name: "Model 3" }], total: 2, hasMore: false, page: 1, searchQuery: "" },
+        "req2",
+        { page: 1, searchQuery: "" },
+      ),
+    )
+
+    // Should replace cars, not append
+    expect(state.cars).toHaveLength(1)
+    expect(state.cars[0].name).toBe("Model 3")
+  })
+
   it("sets loadingMore true when fetching next page", () => {
     const base = carsReducer(
       undefined,
