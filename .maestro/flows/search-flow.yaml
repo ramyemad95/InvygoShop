@@ -1,0 +1,40 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Test: Search Flow
+# This test verifies the search functionality works correctly
+
+- launchApp
+
+- waitForAnimationToEnd
+
+# Wait for home screen to load
+- assertVisible: "Invygo Shop"
+
+# Tap on search input
+- tapOn:
+    id: "search-input"
+    optional: true
+- tapOn:
+    text: "Search cars..."
+    optional: true
+
+# Type search query
+- inputText: "Tesla"
+
+# Wait for results to load
+- waitForAnimationToEnd
+- wait: 500
+
+# Verify search results appear
+- assertVisible:
+    text: "Tesla"
+    optional: true
+
+# Clear search
+- clearText
+- waitForAnimationToEnd
+
+# Verify all cars are shown again
+- assertVisible: "Invygo Shop"

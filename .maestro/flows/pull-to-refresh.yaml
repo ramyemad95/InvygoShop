@@ -1,0 +1,27 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Test: Pull to Refresh
+# This test verifies the pull-to-refresh functionality
+
+- launchApp
+
+- waitForAnimationToEnd
+
+# Wait for home screen to load
+- assertVisible: "Invygo Shop"
+
+# Wait for initial load
+- wait: 2000
+
+# Perform pull-to-refresh gesture
+- swipe:
+    start: "50%,20%"
+    end: "50%,80%"
+    duration: 500
+
+- waitForAnimationToEnd
+
+# Verify refresh completed
+- assertVisible: "Invygo Shop"

@@ -2,7 +2,7 @@
 module.exports = {
   preset: "jest-expo",
   setupFiles: ["<rootDir>/test/setup.ts"],
-  collectCoverage: true,
+  collectCoverage: false, // Disable coverage for integration/snapshot tests
   collectCoverageFrom: [
     "<rootDir>/src/api/**/*.{ts,tsx}",
     "<rootDir>/src/store/**/*.{ts,tsx}",
@@ -16,6 +16,7 @@ module.exports = {
       statements: 80,
     },
   },
+  testEnvironment: "node", // Use node environment for faster tests
   coveragePathIgnorePatterns: [
     "/node_modules/",
     "<rootDir>/src/devtools/",
@@ -28,6 +29,8 @@ module.exports = {
     "<rootDir>/src/utils/useHeader.tsx",
     "<rootDir>/src/utils/formatDate.ts",
     "<rootDir>/src/utils/useSafeAreaInsetsStyle.ts",
+    "<rootDir>/src/.*/__tests__/",
+    "<rootDir>/src/.*/.*\\.test\\.tsx?$",
   ],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",

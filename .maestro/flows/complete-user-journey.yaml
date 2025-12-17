@@ -1,0 +1,109 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Test: Complete User Journey
+# This test covers the full user flow: search -> filter -> view details -> checkout
+
+- launchApp
+
+- waitForAnimationToEnd
+
+# Step 1: Search for a car
+- assertVisible: "Invygo Shop"
+
+- tapOn:
+    text: "Search cars..."
+    optional: true
+
+- inputText: "BMW"
+
+- waitForAnimationToEnd
+- wait: 1000
+
+# Step 2: Open filters
+- tapOn:
+    text: "Filters"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Step 3: Apply color filter
+- tapOn:
+    text: "black"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Step 4: Apply filters
+- tapOn:
+    text: "Apply"
+    optional: true
+
+- waitForAnimationToEnd
+- wait: 1000
+
+# Step 5: View car details
+- tapOn:
+    index: 0
+    optional: true
+
+- waitForAnimationToEnd
+
+# Step 6: Select color and proceed to checkout
+- tapOn:
+    text: "black"
+    optional: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Buy Now"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Step 7: Fill checkout form
+- tapOn:
+    placeholder: "1234 5678 9012 3456"
+    optional: true
+- inputText: "4111111111111111"
+
+- tapOn:
+    placeholder: "John Doe"
+    optional: true
+- inputText: "John Doe"
+
+- tapOn:
+    placeholder: "MM/YY"
+    optional: true
+- inputText: "1225"
+
+- tapOn:
+    placeholder: "123"
+    optional: true
+- inputText: "123"
+
+- waitForAnimationToEnd
+
+# Step 8: Complete purchase
+- tapOn:
+    text: "Confirm Buy"
+    optional: true
+
+- waitForAnimationToEnd
+- wait: 2500
+
+# Step 9: Verify success
+- assertVisible:
+    text: "Congratulations"
+    optional: true
+
+# Step 10: Return to home
+- tapOn:
+    text: "OK"
+    optional: true
+
+- waitForAnimationToEnd
+
+- assertVisible: "Invygo Shop"

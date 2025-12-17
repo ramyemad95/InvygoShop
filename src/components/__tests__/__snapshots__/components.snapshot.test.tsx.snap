@@ -1,0 +1,1307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Snapshot Tests Button should match snapshot when disabled 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": true,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 56,
+        "overflow": "hidden",
+        "paddingHorizontal": 12,
+        "paddingVertical": 12,
+      },
+      undefined,
+      false,
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        [
+          {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "fontFamily": "spaceGroteskMedium",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "zIndex": 2,
+          },
+          undefined,
+          false,
+          undefined,
+        ],
+      ]
+    }
+  >
+    Disabled
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests Button should match snapshot with default preset 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 56,
+        "overflow": "hidden",
+        "paddingHorizontal": 12,
+        "paddingVertical": 12,
+      },
+      undefined,
+      false,
+      false,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        [
+          {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "fontFamily": "spaceGroteskMedium",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "zIndex": 2,
+          },
+          undefined,
+          false,
+          false,
+        ],
+      ]
+    }
+  >
+    Click Me
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests Button should match snapshot with filled preset 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  preset="filled"
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#D7CEC9",
+        "borderRadius": 4,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 56,
+        "overflow": "hidden",
+        "paddingHorizontal": 12,
+        "paddingVertical": 12,
+      },
+      undefined,
+      false,
+      false,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        [
+          {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "fontFamily": "spaceGroteskMedium",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "zIndex": 2,
+          },
+          undefined,
+          false,
+          false,
+        ],
+      ]
+    }
+  >
+    Submit
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests Button should match snapshot with reversed preset 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  preset="reversed"
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#191015",
+        "borderRadius": 4,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 56,
+        "overflow": "hidden",
+        "paddingHorizontal": 12,
+        "paddingVertical": 12,
+      },
+      undefined,
+      false,
+      false,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        [
+          {
+            "color": "#FFFFFF",
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "fontFamily": "spaceGroteskMedium",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "zIndex": 2,
+          },
+          undefined,
+          false,
+          false,
+        ],
+      ]
+    }
+  >
+    Cancel
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests Button should match snapshot with translation key 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "minHeight": 56,
+        "overflow": "hidden",
+        "paddingHorizontal": 12,
+        "paddingVertical": 12,
+      },
+      undefined,
+      false,
+      false,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        [
+          {
+            "flexGrow": 0,
+            "flexShrink": 1,
+            "fontFamily": "spaceGroteskMedium",
+            "fontSize": 16,
+            "lineHeight": 20,
+            "textAlign": "center",
+            "zIndex": 2,
+          },
+          undefined,
+          false,
+          false,
+        ],
+      ]
+    }
+  >
+    common:ok
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests Card should match snapshot as pressable 1`] = `
+<View
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#D7CEC9",
+      "borderRadius": 16,
+      "borderWidth": 1,
+      "elevation": 16,
+      "flexDirection": "row",
+      "minHeight": 96,
+      "opacity": 1,
+      "padding": 8,
+      "shadowColor": "#191015",
+      "shadowOffset": {
+        "height": 12,
+        "width": 0,
+      },
+      "shadowOpacity": 0.08,
+      "shadowRadius": 12.81,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignSelf": "stretch",
+          "flex": 1,
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskBold",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginBottom": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Pressable Card
+    </Text>
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskRegular",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginTop": 2,
+            },
+            false,
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Tap me
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests Card should match snapshot with center alignment 1`] = `
+<View
+  activeOpacity={0.8}
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#D7CEC9",
+        "borderRadius": 16,
+        "borderWidth": 1,
+        "elevation": 16,
+        "flexDirection": "row",
+        "minHeight": 96,
+        "padding": 8,
+        "shadowColor": "#191015",
+        "shadowOffset": {
+          "height": 12,
+          "width": 0,
+        },
+        "shadowOpacity": 0.08,
+        "shadowRadius": 12.81,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignSelf": "stretch",
+          "flex": 1,
+        },
+        {
+          "justifyContent": "center",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskBold",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginBottom": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Centered
+    </Text>
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskRegular",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginTop": 2,
+            },
+            false,
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Content
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests Card should match snapshot with default preset 1`] = `
+<View
+  activeOpacity={0.8}
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#D7CEC9",
+        "borderRadius": 16,
+        "borderWidth": 1,
+        "elevation": 16,
+        "flexDirection": "row",
+        "minHeight": 96,
+        "padding": 8,
+        "shadowColor": "#191015",
+        "shadowOffset": {
+          "height": 12,
+          "width": 0,
+        },
+        "shadowOpacity": 0.08,
+        "shadowRadius": 12.81,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignSelf": "stretch",
+          "flex": 1,
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskBold",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginBottom": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Card Title
+    </Text>
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskRegular",
+          },
+          undefined,
+          [
+            {},
+            {
+              "marginTop": 2,
+            },
+            {
+              "marginBottom": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Card content goes here
+    </Text>
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskRegular",
+          },
+          {
+            "fontSize": 14,
+            "lineHeight": 21,
+          },
+          [
+            {},
+            {
+              "marginTop": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Card footer
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests Card should match snapshot with reversed preset 1`] = `
+<View
+  activeOpacity={0.8}
+  preset="reversed"
+  style={
+    [
+      {
+        "backgroundColor": "#191015",
+        "borderColor": "#978F8A",
+        "borderRadius": 16,
+        "borderWidth": 1,
+        "elevation": 16,
+        "flexDirection": "row",
+        "minHeight": 96,
+        "padding": 8,
+        "shadowColor": "#191015",
+        "shadowOffset": {
+          "height": 12,
+          "width": 0,
+        },
+        "shadowOpacity": 0.08,
+        "shadowRadius": 12.81,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignSelf": "stretch",
+          "flex": 1,
+        },
+        {
+          "justifyContent": "flex-start",
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskBold",
+          },
+          undefined,
+          [
+            {
+              "color": "#FFFFFF",
+            },
+            {
+              "marginBottom": 2,
+            },
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Dark Card
+    </Text>
+    <Text
+      style={
+        [
+          false,
+          {
+            "color": "#191015",
+            "fontFamily": "spaceGroteskRegular",
+            "fontSize": 16,
+            "lineHeight": 24,
+          },
+          {
+            "fontFamily": "spaceGroteskRegular",
+          },
+          undefined,
+          [
+            {
+              "color": "#FFFFFF",
+            },
+            {
+              "marginTop": 2,
+            },
+            false,
+            undefined,
+            undefined,
+          ],
+        ]
+      }
+    >
+      Dark card content
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests Text should match snapshot with formLabel preset 1`] = `
+<Text
+  preset="formLabel"
+  style={
+    [
+      false,
+      {
+        "color": "#191015",
+        "fontFamily": "spaceGroteskMedium",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      undefined,
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Form Label
+</Text>
+`;
+
+exports[`Component Snapshot Tests Text should match snapshot with heading preset 1`] = `
+<Text
+  preset="heading"
+  style={
+    [
+      false,
+      {
+        "color": "#191015",
+        "fontFamily": "spaceGroteskBold",
+        "fontSize": 36,
+        "lineHeight": 44,
+      },
+      undefined,
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Heading Text
+</Text>
+`;
+
+exports[`Component Snapshot Tests Text should match snapshot with subheading preset 1`] = `
+<Text
+  preset="subheading"
+  style={
+    [
+      false,
+      {
+        "color": "#191015",
+        "fontFamily": "spaceGroteskMedium",
+        "fontSize": 20,
+        "lineHeight": 32,
+      },
+      undefined,
+      undefined,
+      undefined,
+    ]
+  }
+>
+  Subheading Text
+</Text>
+`;
+
+exports[`Component Snapshot Tests Text should match snapshot with translation key 1`] = `
+<Text
+  style={
+    [
+      false,
+      {
+        "color": "#191015",
+        "fontFamily": "spaceGroteskRegular",
+        "fontSize": 16,
+        "lineHeight": 24,
+      },
+      undefined,
+      undefined,
+      undefined,
+    ]
+  }
+>
+  common:ok
+</Text>
+`;
+
+exports[`Component Snapshot Tests TextField should match snapshot with error status 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "flex-start",
+        "backgroundColor": "#F4F2F1",
+        "borderColor": "#C03403",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      editable={true}
+      onChangeText={[Function]}
+      placeholder="Email"
+      placeholderTextColor="#564E4A"
+      style={
+        {
+          "alignSelf": "stretch",
+          "color": "#191015",
+          "flex": 1,
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "height": 24,
+          "marginHorizontal": 12,
+          "marginVertical": 8,
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+        }
+      }
+      textAlignVertical="top"
+      underlineColorAndroid="rgba(0, 0, 0, 0)"
+      value="invalid"
+    />
+  </View>
+  <Text
+    preset="formHelper"
+    style={
+      [
+        false,
+        {
+          "color": "#191015",
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "lineHeight": 24,
+        },
+        undefined,
+        undefined,
+        {
+          "color": "#C03403",
+          "marginTop": 8,
+        },
+      ]
+    }
+  >
+    Invalid email
+  </Text>
+</View>
+`;
+
+exports[`Component Snapshot Tests TextField should match snapshot with numeric keyboard 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "flex-start",
+        "backgroundColor": "#F4F2F1",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      editable={true}
+      keyboardType="numeric"
+      onChangeText={[Function]}
+      placeholder="Price"
+      placeholderTextColor="#564E4A"
+      style={
+        {
+          "alignSelf": "stretch",
+          "color": "#191015",
+          "flex": 1,
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "height": 24,
+          "marginHorizontal": 12,
+          "marginVertical": 8,
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+        }
+      }
+      textAlignVertical="top"
+      underlineColorAndroid="rgba(0, 0, 0, 0)"
+      value=""
+    />
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests TextField should match snapshot with placeholder 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "flex-start",
+        "backgroundColor": "#F4F2F1",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      editable={true}
+      onChangeText={[Function]}
+      placeholder="Enter text"
+      placeholderTextColor="#564E4A"
+      style={
+        {
+          "alignSelf": "stretch",
+          "color": "#191015",
+          "flex": 1,
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "height": 24,
+          "marginHorizontal": 12,
+          "marginVertical": 8,
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+        }
+      }
+      textAlignVertical="top"
+      underlineColorAndroid="rgba(0, 0, 0, 0)"
+      value=""
+    />
+  </View>
+</View>
+`;
+
+exports[`Component Snapshot Tests TextField should match snapshot with value 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "flex-start",
+        "backgroundColor": "#F4F2F1",
+        "borderColor": "#B6ACA6",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <TextInput
+      editable={true}
+      onChangeText={[Function]}
+      placeholder="Email"
+      placeholderTextColor="#564E4A"
+      style={
+        {
+          "alignSelf": "stretch",
+          "color": "#191015",
+          "flex": 1,
+          "fontFamily": "spaceGroteskRegular",
+          "fontSize": 16,
+          "height": 24,
+          "marginHorizontal": 12,
+          "marginVertical": 8,
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+        }
+      }
+      textAlignVertical="top"
+      underlineColorAndroid="rgba(0, 0, 0, 0)"
+      value="test@example.com"
+    />
+  </View>
+</View>
+`;

@@ -4,6 +4,17 @@ import * as ReactNative from "react-native"
 
 import mockFile from "./mockFile"
 
+// Initialize Dimensions before mocking
+if (!ReactNative.Dimensions) {
+  // @ts-ignore
+  ReactNative.Dimensions = {
+    get: jest.fn(() => ({ width: 375, height: 667, scale: 1, fontScale: 1 })),
+    set: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+  }
+}
+
 // libraries to mock
 jest.doMock("react-native", () => {
   // Extend ReactNative
@@ -19,6 +30,17 @@ jest.doMock("react-native", () => {
             failure?: (_error: any) => void, // eslint-disable-line @typescript-eslint/no-unused-vars
           ) => success(100, 100),
         ),
+      },
+      Dimensions: ReactNative.Dimensions,
+      NativeModules: {
+        ...ReactNative.NativeModules,
+        DevMenu: {
+          show: jest.fn(),
+          getConstants: jest.fn(() => ({})),
+        },
+        DeviceInfo: {
+          getConstants: jest.fn(() => ({})),
+        },
       },
     },
     ReactNative,

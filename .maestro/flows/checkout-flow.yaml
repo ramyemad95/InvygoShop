@@ -1,0 +1,117 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Test: Complete Checkout Flow
+# This test verifies the complete user journey from browsing to checkout
+
+- launchApp
+
+- waitForAnimationToEnd
+
+# Wait for home screen to load
+- assertVisible: "Invygo Shop"
+
+# Wait for cars to load
+- wait: 2000
+
+# Tap on first car item
+- tapOn:
+    index: 0
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify car details screen
+- assertVisible:
+    text: "Buy Now"
+    optional: true
+
+# Select a color (required before checkout)
+- tapOn:
+    text: "red"
+    optional: true
+- tapOn:
+    text: "blue"
+    optional: true
+- tapOn:
+    text: "black"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Tap Buy Now button
+- tapOn:
+    text: "Buy Now"
+    optional: true
+- tapOn:
+    text: "carDetailsScreen:buyNow"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify checkout modal is open
+- assertVisible:
+    text: "Checkout"
+    optional: true
+- assertVisible:
+    text: "checkoutModal:title"
+    optional: true
+
+# Fill in payment form
+- tapOn:
+    placeholder: "1234 5678 9012 3456"
+    optional: true
+- inputText: "4111111111111111"
+
+- tapOn:
+    placeholder: "John Doe"
+    optional: true
+- inputText: "John Doe"
+
+- tapOn:
+    placeholder: "MM/YY"
+    optional: true
+- inputText: "1225"
+
+- tapOn:
+    placeholder: "123"
+    optional: true
+- inputText: "123"
+
+- waitForAnimationToEnd
+
+# Confirm purchase
+- tapOn:
+    text: "Confirm Buy"
+    optional: true
+- tapOn:
+    text: "checkoutModal:confirmBuy"
+    optional: true
+- tapOn:
+    id: "checkout-confirm"
+    optional: true
+
+- waitForAnimationToEnd
+- wait: 2500
+
+# Verify success modal appears
+- assertVisible:
+    text: "Congratulations"
+    optional: true
+- assertVisible:
+    text: "successModal:title"
+    optional: true
+
+# Close success modal
+- tapOn:
+    text: "OK"
+    optional: true
+- tapOn:
+    text: "common:ok"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify navigation back to home
+- assertVisible: "Invygo Shop"

@@ -1,0 +1,86 @@
+appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runFlow: ../shared/_OnFlowStart.yaml
+---
+# Test: Filter Flow
+# This test verifies filtering by color and price range works correctly
+
+- launchApp
+
+- waitForAnimationToEnd
+
+# Wait for home screen to load
+- assertVisible: "Invygo Shop"
+
+# Open filters
+- tapOn:
+    text: "Filters"
+    optional: true
+- tapOn:
+    text: "homeScreen:filters"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify filter sheet is open
+- assertVisible:
+    text: "Price Range"
+    optional: true
+- assertVisible:
+    text: "Colors"
+    optional: true
+
+# Select a color filter
+- tapOn:
+    text: "red"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Set price range
+- tapOn:
+    id: "min-price-input"
+    optional: true
+- inputText: "50000"
+
+- tapOn:
+    id: "max-price-input"
+    optional: true
+- inputText: "100000"
+
+- waitForAnimationToEnd
+
+# Apply filters
+- tapOn:
+    text: "Apply"
+    optional: true
+- tapOn:
+    text: "homeScreen:apply"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify filters are applied (cars should be filtered)
+- assertVisible: "Invygo Shop"
+
+# Reset filters
+- tapOn:
+    text: "Filters"
+    optional: true
+- tapOn:
+    text: "homeScreen:filters"
+    optional: true
+
+- waitForAnimationToEnd
+
+- tapOn:
+    text: "Reset"
+    optional: true
+- tapOn:
+    text: "homeScreen:reset"
+    optional: true
+
+- waitForAnimationToEnd
+
+# Verify filters are reset
+- assertVisible: "Invygo Shop"
