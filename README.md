@@ -327,5 +327,4 @@ The app includes error boundaries to catch and display React errors gracefully.
 - Uses [Expo](https://expo.dev/) for React Native development
 - Icons and images from various sources
 
-
 Made by Ramy Mehanna
