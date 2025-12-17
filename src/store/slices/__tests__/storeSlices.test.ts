@@ -117,7 +117,7 @@ describe("carsSlice", () => {
   })
 
   it("handles pending state with undefined arg", () => {
-    const state = carsReducer(undefined, loadCars.pending("req", undefined))
+    const state = carsReducer(undefined, loadCars.pending("req", {}))
     expect(state.loading).toBe(true)
   })
 
