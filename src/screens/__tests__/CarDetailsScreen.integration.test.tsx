@@ -298,10 +298,10 @@ jest.mock("@/components/CheckoutModal", () => {
     const [cardHolder, setCardHolder] = React.useState("")
     const [expiryDate, setExpiryDate] = React.useState("")
     const [cvv, setCvv] = React.useState("")
-    const [errors, setErrors] = React.useState<any>({})
+    const [errors, setErrors] = React.useState({} as Record<string, string>)
 
     const handleConfirm = () => {
-      const newErrors: any = {}
+      const newErrors: Record<string, string> = {}
       if (!cardNumber || cardNumber.replace(/\s/g, "").length !== 16) {
         newErrors.cardNumber = translate("checkoutModal:cardNumberError")
       }
